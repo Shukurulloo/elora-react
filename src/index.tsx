@@ -7,7 +7,7 @@ import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import CssBaseline from '@mui/material/CssBaseline'; // standart integratsiya
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme';
+import theme from './app/MaterialTheme';
 import './css/index.css';
 
 ReactDOM.render(  // ReactDOM olib ustida renderni amalga oshirib ichiga 1-ument react srcni joylaymiz
