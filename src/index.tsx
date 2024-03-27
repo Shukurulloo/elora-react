@@ -8,15 +8,18 @@ import reportWebVitals from './reportWebVitals';
 import CssBaseline from '@mui/material/CssBaseline'; // standart integratsiya
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './app/MaterialTheme';
+import { BrowserRouter as Router} from "react-router-dom";
 import './css/index.css';
 
 ReactDOM.render(  // ReactDOM olib ustida renderni amalga oshirib ichiga 1-ument react srcni joylaymiz
   <React.StrictMode>
     <Provider store={store}>
-    <ThemeProvider theme={theme}> 
-    <CssBaseline />
-    <App />
-    </ThemeProvider>
+      <ThemeProvider theme={theme}> 
+        <CssBaseline />
+          <Router>
+             <App />
+          </Router>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
 /** vertdomga realdomni instansi yani documentni functsiyasini root qismi 2-argumnet qlb pass qilamz*/
