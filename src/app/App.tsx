@@ -2,8 +2,10 @@ import React from 'react';
 import '../css/app.css';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import { Link, Route, Switch } from 'react-router-dom';
-import { About } from './screens/About';
-import { Users } from './screens/Users';
+import { HomePage } from './screens/homePage';
+import { ProductsPage } from './screens/productsPage';
+import { OrdersPage } from './screens/ordersPage';
+import { UserPage } from './screens/userPage';
 
 
 function App() { // MUI componentlari
@@ -12,36 +14,39 @@ function App() { // MUI componentlari
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">HomePage</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/products">ProductsPage</Link>
         </li>
         <li>
-          <Link to="/users">Users</Link>
+          <Link to="/orders">OrdersPage</Link>
+        </li>
+        <li>
+          <Link to="/member-page">UserPage</Link>
         </li>
       </ul>
     </nav>
 
 {/* svitch mantigi pathni solishtiryapti qiymati bir xil bo'lsa ochib beryapti */}
     <Switch>
-      <Route path="/about">
-        <About />
+      <Route path="/products">
+        <ProductsPage />
       </Route>
-      <Route path="/users">
-        <Users />
+      <Route path="/orders">
+        <OrdersPage />
       </Route>
-      {/* o'zak link "/" doim oxirida bo'lishi kerak */}
+      <Route path="/member-page">
+        <UserPage />
+      </Route>
+      {/* o'zak link (path="/") doim oxirida bo'lishi kerak */}
       <Route path="/">
-        <Home />
+        <HomePage />
       </Route>
     </Switch>
   </div>
   );
 }
 
-function Home() {
-  return <Container>Home</Container>;
-}
 
 export default App;
