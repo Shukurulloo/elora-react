@@ -1,34 +1,25 @@
 import React from 'react';
 import '../css/app.css';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, useLocation } from 'react-router-dom';
 import { HomePage } from './screens/homePage';
 import { ProductsPage } from './screens/productsPage';
 import { OrdersPage } from './screens/ordersPage';
 import { UserPage } from './screens/userPage';
+import { HomeNavbar } from './components/headers/HomeNavbar';
+import { OtherNavbar } from './components/headers/OtherNavbar';
+import { Footer } from './components/footer';
 
 
 function App() { // MUI componentlari
-  return (
-    <div>
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">HomePage</Link>
-        </li>
-        <li>
-          <Link to="/products">ProductsPage</Link>
-        </li>
-        <li>
-          <Link to="/orders">OrdersPage</Link>
-        </li>
-        <li>
-          <Link to="/member-page">UserPage</Link>
-        </li>
-      </ul>
-    </nav>
+  // bu mantiq qaysi page daligimizni aniqlash un
+  const location = useLocation() //bu hook uning natijasi object, pathname: orqali pageni bilamz
 
-{/* svitch mantigi pathni solishtiryapti qiymati bir xil bo'lsa ochib beryapti */}
+  return (
+    <> 
+    {/* agar homePageda bo'lsa HomeNavbar aks holde Othernavbar ochiladi */}
+      { location.pathname === "/" ? <HomeNavbar/> : <OtherNavbar/> }
+{/* svitch(yo'naltirish) mantigi pathni solishtiryapti qiymati bir xil bo'lsa ochib beryapti */}
     <Switch>
       <Route path="/products">
         <ProductsPage />
@@ -39,12 +30,13 @@ function App() { // MUI componentlari
       <Route path="/member-page">
         <UserPage />
       </Route>
-      {/* o'zak link (path="/") doim oxirida bo'lishi kerak */}
+      {/*rout o'zak link (path="/") doim oxirida bo'lishi kerak */}
       <Route path="/">
         <HomePage />
       </Route>
     </Switch>
-  </div>
+    <Footer/>
+  </>
   );
 }
 

@@ -8,10 +8,10 @@ import reportWebVitals from './reportWebVitals';
 import CssBaseline from '@mui/material/CssBaseline'; // standart integratsiya
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './app/MaterialTheme';
-import { BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom"; // rooting tizimini shu package . BrowserRouterni Routerga o'zgartiramz
 import './css/index.css';
 
-ReactDOM.render(  // ReactDOM olib ustida renderni amalga oshirib ichiga 1-ument react srcni joylaymiz
+ReactDOM.render(//(vertualdom) ReactDOM olib ustida renderni amalga oshirib ichiga 1-argument react(vertualdom) srcni joylaymiz
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}> 
@@ -22,7 +22,7 @@ ReactDOM.render(  // ReactDOM olib ustida renderni amalga oshirib ichiga 1-ument
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,
-/** vertdomga realdomni instansi yani documentni functsiyasini root qismi 2-argumnet qlb pass qilamz*/
+/** (realdom) vertdomga realdomni instansi yani documentni functsiyasini root qismi 2-argumnet qlb pass qilamz*/
   document.getElementById('root')
 );
 
