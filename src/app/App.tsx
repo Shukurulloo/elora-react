@@ -16,6 +16,7 @@ function App() { // MUI componentlari
   const location = useLocation() //bu hook uning natijasi object, pathname: orqali pageni bilamz
 
   return (
+    // "<>" bu Fragment
     <> 
     {/* agar homePageda bo'lsa HomeNavbar aks holde Othernavbar ochiladi */}
       { location.pathname === "/" ? <HomeNavbar/> : <OtherNavbar/> }
@@ -33,7 +34,7 @@ function App() { // MUI componentlari
       <Route path="/help">
         <UserPage />
       </Route>
-      {/*rout o'zak link (path="/") doim oxirida bo'lishi kerak */}
+   {/* rout o'zak link (path="/") doim oxirida bo'lishi kerak */}
       <Route path="/">
         <HomePage />
       </Route>
