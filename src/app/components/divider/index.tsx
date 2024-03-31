@@ -5,6 +5,7 @@ export interface IDividerProps {
 	width?: string;
 	height?: string;
 	bg?: string;
+	mg?: string
 }
 
 const DividerComponent = styled.span<IDividerProps>`
@@ -12,6 +13,7 @@ const DividerComponent = styled.span<IDividerProps>`
 	min-width: ${({ width }) => `${width}px`};
 	min-height: ${({ height }) => `${height}px`};
 	background: ${({ bg }) => `${bg}`};
+	margin: ${({mg}) => `${mg}`}
 `;
 
 function Divider(props: IDividerProps) {
