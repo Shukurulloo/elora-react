@@ -10,7 +10,8 @@ export default function HomeNavbar() {
         <Container className="navbar-container">
             <Stack 
             className="menu"
-            >
+            > 
+            {/* box oxirgi induvidual bo'g'in hisoblanadi uni ichia matn kiritiladi */}
                 <Box>
                     <NavLink to="/">
                         <img 

@@ -34,7 +34,7 @@ function App() { // MUI componentlari
         <UserPage />
       </Route>
       <Route path="/help">
-        <UserPage />
+        <HelpPage />
       </Route>
    {/* rout o'zak link (path="/") doim oxirida bo'lishi kerak */}
       <Route path="/">
