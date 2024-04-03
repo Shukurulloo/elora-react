@@ -7,7 +7,7 @@ export interface IDividerProps {
 	bg?: string;
 	mg?: string
 }
-
+// styledcomponent orqali DividerComponent(spanni)ni hosil qildik
 const DividerComponent = styled.span<IDividerProps>`
 	display: flex;
 	min-width: ${({ width }) => `${width}px`};
