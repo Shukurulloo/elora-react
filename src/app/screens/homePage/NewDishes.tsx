@@ -24,6 +24,8 @@ export default function NewDishes() {
                     <Box className={"category-title"}>Fresh Menu</Box>
                     <Stack className="cards-frame">
                       <CssVarsProvider>
+               {/* agar  newDishesni ichida product mavjud bo'lsa products ko'rinadi 
+                    agar  mavjud bo'lmasa pastda yozilgan text ko'rinadi*/}
                         {newDishes.length !== 0 ? ( 
                          newDishes.map((ele, index) => {
                          return (

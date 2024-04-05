@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 
 export default function HomeNavbar() {
-    const authMember = null; // authinticed  bo'lmagan userlar un
+    const authMember = true; // authinticed  bo'lmagan userlar un
 
     return (
     <div className="home-navbar">

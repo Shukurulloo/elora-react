@@ -11,12 +11,14 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
+// sectional comp
 export default function ChosenProduct() {
   return (
     <div className={"chosen-product"}>
       <Box className={"title"}>Product Detail</Box>
       <Container className={"product-container"}>
         <Stack className={"chosen-product-slider"}>
+        {/* Swiper rasm, malumotlarni yonidagiga o'tkazib korish */}
           <Swiper
             loop={true}
             spaceBetween={10}

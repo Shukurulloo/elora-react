@@ -27,7 +27,7 @@ export default function Events() {
             clickable: true,
           }}
           autoplay={{
-            delay: 2000,
+            delay: 2000, // bu avto o'tish vaqti
             disableOnInteraction: true,
           }}
         >
@@ -35,6 +35,7 @@ export default function Events() {
             return (
               <SwiperSlide key={number} className={"events-info-frame"}>
                 <div className={"events-img"}>
+                {/* lib folerni ichidagi har bir obj ni ichid img key ni qabul qilamz */}
                   <img src={value.img} className={"events-img"} />
                 </div>
                 <Box className={"events-desc"}>

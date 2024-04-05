@@ -3,6 +3,7 @@ import React from "react";
 export default function Advertisement() {
 return (
     <div className="ads-restaurant-frame">
+ {/* buyerda container qo'yilmaganini sababi bizga to'liq ekran kerak */}
         <video 
             className={"ads-video"}
             autoPlay={true}
