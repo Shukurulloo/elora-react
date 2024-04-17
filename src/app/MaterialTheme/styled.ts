@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 
+// bu o'qilmagan habarlar sonini chiqarib berishi uchn
 export const RippleBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     color: "#44b700",

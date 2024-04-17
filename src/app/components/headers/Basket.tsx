@@ -7,6 +7,8 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
 
+
+// bu savatcha chiqishi uchun
 export default function Basket() {
   const authMember = null;
   const history = useHistory();

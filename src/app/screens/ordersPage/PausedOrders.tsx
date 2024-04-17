@@ -6,6 +6,7 @@ export default function PausedOrders() {
     return(
         <TabPanel value={"1"}>
             <Stack>
+                {/* bu raqamlar orderlarni soni */}
                 {[1, 2].map((ele, index) => {
                     return(
                         <Box key={index} className={"order-main-box"}>

@@ -10,8 +10,10 @@ import FinishedOrders from "./FinishedOrders";
 import "../../../css/order.css"
 
 export default function OrdersPage() {
+    // bular hooklar tab o'zgarganda qiymat keladi va hooklar orqali valueni qiymatini o'zgartiradi
     const [value, setValue] = useState("1");// boshlang'ich qiymati 1 deyildi
 
+    // handleChange functioni orqali tab panel o'zgaradi
     const handleChange = (e: SyntheticEvent, newValue: string) => {
         setValue(newValue);
     };
@@ -24,7 +26,7 @@ export default function OrdersPage() {
                 <Box className={"order-nav-frame"}>
                    <Box sx={{ borderBottom: 1, borderColor: "divider"}}>
                     <Tabs 
-                        value={value}
+                        value={value} // value shu orqali panel o'zgaradi
                         onChange={handleChange}
                         aria-label="basic tabs example"
                         className={"table-list"}

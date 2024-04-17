@@ -57,6 +57,7 @@ export default function HelpPage() {
               {/* lib folderini ichidagi faq dan objdan iborat arraydan datalarni olamz */}
                   {faq.map((value, number) => {
                     return (
+                      // accordionni ishlatdik bossa pastda ochiladi
                       <Accordion key={number}>
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}

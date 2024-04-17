@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 
 export default function HomeNavbar() {
-    const authMember = true; // authinticed  bo'lmagan userlar un
+    const authMember = null; // authinticed  bo'lmagan userlar un
 
     return (
     <div className="home-navbar">
@@ -20,13 +20,13 @@ export default function HomeNavbar() {
                 </Box>
                 <Stack className="links">
                  <Box className={"hover-line"} >
-                    {/* "/" Home pageda bo'lsa automatic underline yonadi */}
+                    {/* "/" Home pageda bo'lsa automatic underline yonadi shu sabab activeClassName={"underline"} */}
                     <NavLink to="/" activeClassName={"underline"}>Home</NavLink>
                  </Box>   
                  <Box className={"hover-line"}>
                     <NavLink to="/products" activeClassName={"underline"}>Products</NavLink>
                  </Box> 
-{/* authinticed bo'lgan user bo'lsa qo'shimcha narsalar ko'rsatsin */}
+        {/* authinticed bo'lgan user bo'lsa qo'shimcha narsalar ko'rsatsin */}
                  {authMember ? ( 
                  <Box className={"hover-line"}>
                     <NavLink to="/orders" activeClassName={"underline"}>Orders</NavLink>

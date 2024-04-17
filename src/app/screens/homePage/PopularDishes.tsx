@@ -4,7 +4,7 @@ import Card from '@mui/joy/Card';
 import CardCover from '@mui/joy/CardCover';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
-import {CssVarsProvider} from "@mui/joy/styles"; // shu ichiga cardni kiritamz kiritmasak error
+import {CssVarsProvider} from "@mui/joy/styles"; // mui joyni ishlatib shuni ichiga cardni kiritamz kiritmasak error
 import CardOverflow from '@mui/joy/CardOverflow';
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
