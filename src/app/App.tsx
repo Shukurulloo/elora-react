@@ -39,8 +39,7 @@ function App() { // MUI componentlari
       </Route>
    {/* rout o'zak link (path="/") doim oxirida bo'lishi kerak */}
       <Route path="/">
-        <Test/>
-        {/* <HomePage /> */}
+        <HomePage />
       </Route>
     </Switch>
     <Footer/>

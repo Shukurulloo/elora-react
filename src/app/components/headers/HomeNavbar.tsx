@@ -3,28 +3,36 @@ import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 import React, { useState, useEffect }from 'react';
 
+/** hooklar react.16.8
+ * ...value
+ useState -- class componentni suniy state sini hosil qilib beradi
+ useEffect -- har 3 Lifecycle methodi(faza)ni qurib beradi
+*/
 export default function HomeNavbar() {
-    const authMember = null; // authinticed  bo'lmagan userlar un
-    const [count, setcount] = useState<number>(0);
+    const authMember = null; //true authinticed  bo'lmagan userlar un
+    const [count, setcount] = useState<number>(0); //o'zgaruvci va uni o'zgartruvchiga tenglab
+// value varebli va o'zgartruvchi methodni hosl qilib usega tenglab boshlng'ch qiymatini bln true qilamz typeni yozamz
     const [value, setvalue] = useState<boolean>(true);
 
-    useEffect(() => {
-        console.log("componentDidMount", count);  // DATA FETCH
-        setcount(count + 1);
+// bu birinchi 1marta ishga tushadi array dependensy[]ni ichiga biror valueni qo'ysak yana qayta ishga tushadi
+    useEffect(() => { // 2ta argumenti bor 1-callback func. 2-array dependensy[]
+        console.log("componentDidMount", count);  // DATA FETCH(data olish)
+        setcount(count + 1); // birinchi kirib keganda 1taga oshryapti
 
-        return () => {
+        return () => {  // return mantiq orqali componentWillUnmount fazasini xosil qilish mumkin
             console.log("componentWillUnmount");
         }
-    }, [value]);
-    
+    }, [value]); // componentDidUpdate: valuni qiymati o'zgarsa useeffect qata ishga tushadi buni qo'masak muammo bo'aldi
+
 
     /** HANDLERS **/
 
+// bu function, buton bosilsa tru bo'lsa false(qarama qarshi) qiladi
     const buttonHandler = () => {
         setvalue(!value);
     }
 
-    return (
+    return ( //sintaks
     <div className="home-navbar">
         <Container className="navbar-container">
             <Stack 
@@ -88,7 +96,7 @@ export default function HomeNavbar() {
                         <Button 
                         variant={"contained"} 
                         className={"signup-button"} 
-                        onClick={buttonHandler}>
+                        onClick={buttonHandler}>{/* +1(!false,!true) bu soddalashgani agar argumnet bo'lsa to'liq bshi kk */}
                             SIGN UP
                         </Button>
                         ) : null}
