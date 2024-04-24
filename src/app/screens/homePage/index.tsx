@@ -15,20 +15,22 @@ import { retrievePopularDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 
 /** REDUX SLICE & SELECTOR **/
-const actionDispatch = (dispatch: Dispatch) => ({
+// dispatch orqali data reducerga kirb keladi
+const actionDispatch = (dispatch: Dispatch) => ({ //vareblga tenglab dispatchni typesi bn kiritib unga 1ta argument
     setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
-});
-const popularDishesRetriever = createSelector(
-    retrievePopularDishes, 
-    (popularDishes) => ({ popularDishes})
+});// setPopularDishes comandasini setPopularDishes reducer orqli amalga oshrmiz
+const popularDishesRetriever = createSelector( //yuklangan datani retriever orqali qabul qilish
+    retrievePopularDishes, // 1-argument
+    (popularDishes) => ({ popularDishes }) // 2-argument
 );
 
 export default function HomePage() {
-    const {setPopularDishes} = actionDispatch(useDispatch());
-    const {popularDishes} = useSelector(popularDishesRetriever);
-    // Selector: Store => Data
+    // actionDispatchni icidan useDispatchni kiritsak bizga setPopularDishes comondasini functiona compni ichiga chaqiradi
+    const {setPopularDishes} = actionDispatch(useDispatch()); 
+    const {popularDishes} = useSelector(popularDishesRetriever);  //useSelector hookiga pas qilib popularDishesni qolga olamz
 
-    useEffect(() => {}, []);
+
+    useEffect(() => {}, []); // 3xil lifesicle
 
     return <div className={"homepage"}>
         <Statistics/>

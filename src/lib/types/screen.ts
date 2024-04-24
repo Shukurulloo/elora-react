@@ -7,7 +7,7 @@ export interface AppRootState {
     // productsPage: ProductsPageState;
 }
 
-/** HOMEPAGE **/
+/** HOMEPAGE scren compga dahldor  type integratsiya**/
 export interface HomePageState {
     popularDishes: Product[];
     newDishes: Product[];

@@ -35,7 +35,7 @@ export interface LoginInput {
 }
 
 // buyerda restaranimiz oddiy userlarni qanday malumotlarini o'zgartiraolish huquqini olishini belgilab beramz
-export interface MemberUpdateInput {
+export interface MemberUpdateInput {  // idn: murojat etuvchini cookiesini ichidagin tokkendan bilib olamz
     memberNick?: string;
     memberPhone?: string;
     memberPassword?: string;
