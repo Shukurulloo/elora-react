@@ -19,10 +19,10 @@ const homePageSlice = createSlice({ // createSliceni toolkitdan chaqrb 1ta arg h
             state.popularDishes = action.payload; 
         },
         setNewDishes: (state, action) => {
-            state.popularDishes = action.payload;
+            state.newDishes = action.payload;
         },
         setTopUsers: (state, action) => {
-            state.popularDishes = action.payload; 
+            state.topUsers = action.payload; 
         }
     }
 });

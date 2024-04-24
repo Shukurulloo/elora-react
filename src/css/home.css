@@ -131,6 +131,7 @@
     flex-direction: column;
     align-items: center;
 
+
 }
 
 .homepage .new-products-frame .category-title{
@@ -146,12 +147,14 @@
     margin: 47px 2px 2px 2px;
     flex-direction: row;
     justify-content: space-between;
+    
 }
 
 .homepage .new-products-frame .main .card {
     height: 335px;
     width: 290px;
     cursor: pointer;
+    border: 1px solid rgb(216, 214, 214);
 }
 .homepage .new-products-frame .product-sale {
     position: absolute;
