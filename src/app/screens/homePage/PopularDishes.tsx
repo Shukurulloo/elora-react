@@ -21,7 +21,7 @@ const popularDishesRetriever = createSelector( //yuklangan datani retriever orqa
     (popularDishes) => ({ popularDishes }) // 2-argument
 );
 
-export default function PopularDishes() {
+export default function PopularDishes() { // PopularDishesdatasini selector orqali qabul qildik
     const {popularDishes} = useSelector(popularDishesRetriever);  //useSelector hookiga pas qilib popularDishesni qolga olamz
 
     // console.log("popularDishes:", popularDishes);
@@ -32,10 +32,11 @@ return (
         <Stack className="popular-section">
             <Box className="category-title">Popular Dishes</Box>
             <Stack className="cards-frame">
-            {popularDishes.length !== 0 ? ( 
+            {popularDishes.length !== 0 ? ( //popularDishesni joylaymz
                 popularDishes.map((product: Product) => {
                     const imagePath = `${serverApi}/${product.productImages[0]}`;
-                 return (
+                    // backentdan qabul qigan datani product imgini vareblga tengalidk
+                 return ( // har bir productni idsi unit bo'ladi uni keyga briktramz
                     <CssVarsProvider key={product._id}>
                     <Card className={"card"}>
                     <CardCover>

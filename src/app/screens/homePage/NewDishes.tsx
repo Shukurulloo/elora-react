@@ -15,13 +15,13 @@ import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/ config";
 import { ProductCollection } from "../../../lib/enums/product.enum";
 
-/** REDUX SLICE & SproductCTOR **/
+/** SELECTOR **/
 const newDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({ //yuklangan datani retriever orqali qabul qilis
         newDishes,
     }));
 
 export default function NewDishes() {
-    const {newDishes} = useSelector(newDishesRetriever);  //useSelector hookiga pas qilib popularDishesni qolga olamz
+    const {newDishes} = useSelector(newDishesRetriever);  //useSelector hookiga pas qilib popularDishesni qolga olib uni ishlatamz
 
     console.log("newDishes:", newDishes);
 
@@ -37,7 +37,7 @@ export default function NewDishes() {
                         {newDishes.length !== 0 ? ( 
                          newDishes.map((product: Product) => {
                             const imagePath = `${serverApi}/${product.productImages[0]}`;
-                            const sizeVolume = 
+                            const sizeVolume = // agar drink bo'lsa (hajm)litr , aks holda size
                             product.productCollection === ProductCollection.DRINK 
                             ? product.productVolume + "l" 
                             : product.productSize + " size";

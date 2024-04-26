@@ -18,30 +18,30 @@ import MemberService from "../../services/MemberService";
 /** REDUX SLICE & SELECTOR **/
 // dispatch orqali data reducerga kirb keladi
 const actionDispatch = (dispatch: Dispatch) => ({ //vareblga tenglab dispatchni typesi bn kiritib unga 1ta argument
-    setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
+    setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)), // setPopularDishes dispatchga tushadi uni ichida setPopularDishesni clicedan chaqirib uni ichiga yuboriladigon datani payload qilamz
     setNewDishes: (data: Product[]) => dispatch(setNewDishes(data)),
     setTopUsers: (data: Member[]) => dispatch(setTopUsers(data)),
 });// setPopularDishes comandasini setPopularDishes reducer orqli amalga oshrmiz
 
 
 export default function HomePage() {
-    // actionDispatchni icidan useDispatchni kiritsak bizga setPopularDishes comondasini functiona compni ichiga chaqiradi
+    // actionDispatchni icidan useDispatchni kiritsak bizga setPopularDishes comondasini functional compni ichiga chaqiradi
     const { setPopularDishes, setNewDishes, setTopUsers } = actionDispatch(
         useDispatch()
     ); 
 
     useEffect(() => {
         // Backend server data fetch => Data
-        const product = new ProductService();
-        product
-            .getProducts({
-            page: 1,
-            limit: 4,
-            order: "productViews",
-            productCollection: ProductCollection.DISH,
+        const product = new ProductService(); // classdan foydalanib object hosl qilamz
+        product  // product objectni getProducts methotini ishga tushir.
+            .getProducts({  // inputni qiymtini kiritishga majbur qiladi
+            page: 1, /// inputni qiymati
+            limit: 4, // maxsimal qiymati
+            order: "productViews", // ko'p ko'rilganlarni
+            productCollection: ProductCollection.DISH, // faqat dish(taom)lar
         })
-        .then(data => {
-            setPopularDishes(data);
+        .then(data => {  // backentdan kegan malumotlar data qismida qabl etladi
+            setPopularDishes(data); // qabl etgan malumot redux storejga yuklaymz u payload deyiladi
         })
         .catch(err => console.log(err));
 
@@ -49,11 +49,11 @@ export default function HomePage() {
             .getProducts({
             page: 1,
             limit: 4,
-            order: "createdAt",
+            order: "createdAt",  // createdAt mantig'i asosida oxrgi qshlgan 4ta taom
             // productCollection: ProductCollection.DISH,
         })
         .then(data => setNewDishes(data))
-        .catch(err => console.log(err));
+        .catch(err => console.log(err)); // err hosl bosa print qisn
 
         const member = new MemberService();
         member

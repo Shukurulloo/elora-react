@@ -10,13 +10,13 @@ import { retrieveTopUsers } from "./selector";
 import { serverApi } from "../../../lib/ config";
 import { Member } from "../../../lib/types/member";
 
-/** REDUX SLICE & SELECTOR **/
+/** SELECTOR orqali viewg qilamz **/
 const topUsersRetriever = createSelector(retrieveTopUsers, (topUsers) => ({  //yuklangan datani retriever orqali qabul qilish
     topUsers,
 }));
 
 export default function ActiveUsers() {
-    const { topUsers } = useSelector(topUsersRetriever);
+    const { topUsers } = useSelector(topUsersRetriever); // top users datasini selector orqali qabul qildik
 return (
     <div className={"active-users-frame"}>
         <Container>

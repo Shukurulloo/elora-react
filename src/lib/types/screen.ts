@@ -4,7 +4,7 @@ import { Product } from "./product";
 /** REACT APP STATE **/
 export interface AppRootState {
     homePage: HomePageState;
-    // productsPage: ProductsPageState;
+    productsPage: ProductsPageState;
 }
 
 /** HOMEPAGE scren compga dahldor  type integratsiya**/
@@ -15,6 +15,11 @@ export interface HomePageState {
 }
 
 /** PRODUCTS PAGE **/
+export interface ProductsPageState {
+    restaurant: Member | null;
+    chosenProduct: Product | null;
+    products: Product[];
+}
 
 /** ORDERS PAGE **/
 
