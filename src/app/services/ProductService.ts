@@ -22,10 +22,26 @@ class ProductService {
 
             return result.data;     //resultni ichidagi data bo'limidagi qiymatni qaytarsin u esa array
         }catch(err) {
-            console.log("Error, getProduct:", err); // browserni conole da ko'rsh un
+            console.log("Error, getProducts:", err); // browserni conole da ko'rsh un
             throw err;      // errorni qaytaramz
         }
     }
+
+    public async getProduct(productId: string): Promise<Product> {
+        try {
+            const url = `${this.path}/product/${productId}`;
+            const result = await axios.get(url, {withCredentials: true});
+            console.log("getProduct:", result);
+
+            return result.data;
+
+        } catch(err) {
+            console.log("Error, getProduct:", err); 
+            throw err;
+        }
+    }
+
+  
 }
 
 export default ProductService;
