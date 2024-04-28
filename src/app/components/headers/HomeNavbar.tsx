@@ -6,6 +6,10 @@ import { CartItem } from "../../../lib/types/search";
 
 interface HomeNavbarProps {
     cartItems: CartItem[];
+    onAdd: (item: CartItem) => void;
+    onRemove: (item: CartItem) => void;
+    onDelete: (item: CartItem) => void;
+    onDeleteAll: () => void;
  }
 /** hooklar react.16.8
  * ...value
@@ -13,7 +17,7 @@ interface HomeNavbarProps {
  useEffect -- har 3 Lifecycle methodi(faza)ni qurib beradi
 */
 export default function HomeNavbar(props: HomeNavbarProps) {
-    const {cartItems} = props; // destruction usuli
+    const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = props; // destruction usulidan foydalanib qo'lga olamz
     const authMember = null; //true authinticed  bo'lmagan userlar un
     const [count, setcount] = useState<number>(0); //o'zgaruvci va uni o'zgartruvchiga tenglab
 // value varebli va o'zgartruvchi methodni hosl qilib usega tenglab boshlng'ch qiymatini bln true qilamz typeni yozamz
@@ -73,7 +77,13 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                     <NavLink to="/help" activeClassName={"underline"}>Help</NavLink>
                  </Box>
 
-                <Basket cartItems={cartItems} />
+                <Basket 
+                  cartItems={cartItems} 
+                  onAdd={onAdd}  
+                  onRemove={onRemove} 
+                  onDelete={onDelete} 
+                  onDeleteAll={onDeleteAll}
+                  />
 
 {/* authinticed bo'lmagan user bo'lsa loginni ko'rsatsin*/}
                  {!authMember ? (
