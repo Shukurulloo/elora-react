@@ -20,7 +20,7 @@ import { useParams } from "react-router-dom";
 import ProductService from "../../services/ProductService";
 import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
-import { serverApi } from "../../../lib/ config";
+import { serverApi } from "../../../lib/config";
 import { CartItem } from "../../../lib/types/search";
 
 

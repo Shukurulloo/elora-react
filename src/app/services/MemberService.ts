@@ -1,5 +1,5 @@
 import axios from "axios";
-import { serverApi } from "../../lib/ config";
+import { serverApi } from "../../lib/config";
 import { Member } from "../../lib/types/member";
 
 

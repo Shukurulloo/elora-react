@@ -7,7 +7,7 @@ import AspectRatio from "@mui/joy/AspectRatio";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrieveTopUsers } from "./selector";
-import { serverApi } from "../../../lib/ config";
+import { serverApi } from "../../../lib/config";
 import { Member } from "../../../lib/types/member";
 
 /** SELECTOR orqali viewg qilamz **/

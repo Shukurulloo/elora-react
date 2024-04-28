@@ -1,5 +1,5 @@
 import axios from "axios";
-import { serverApi } from "../../lib/ config";
+import { serverApi } from "../../lib/config";
 import { Product, ProductInquiry } from "../../lib/types/product";
 // backentdan datani olish un hizmat qiladigon service file
 class ProductService {

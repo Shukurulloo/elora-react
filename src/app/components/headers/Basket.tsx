@@ -8,7 +8,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
-import { serverApi } from "../../../lib/ config";
+import { serverApi } from "../../../lib/config";
 
 interface BasketProps {
   cartItems: CartItem[];

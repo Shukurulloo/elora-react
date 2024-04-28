@@ -16,7 +16,7 @@ import { retrieveProducts } from "./selector";
 import { Product, ProductInquiry } from '../../../lib/types/product';
 import ProductService from '../../services/ProductService';
 import { ProductCollection } from '../../../lib/enums/product.enum';
-import { serverApi } from '../../../lib/ config';
+import { serverApi } from '../../../lib/config';
 import { useHistory } from 'react-router-dom';
 import { CartItem } from '../../../lib/types/search';
 
