@@ -5,7 +5,7 @@ import { Messages } from "./config";
 export const sweetErrorHandling = async (err: any) => {
   const error = err.response?.data ?? err;
   const message = error?.message ?? Messages.error1;
-  await Swal.fire({
+  await Swal.fire({ //backentdan kelayotgan error bo'lsa frontenda qilgan error ishgatushsin
     icon: "error",
     text: message,
     showConfirmButton: false,

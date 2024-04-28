@@ -10,6 +10,8 @@ interface HomeNavbarProps {
     onRemove: (item: CartItem) => void;
     onDelete: (item: CartItem) => void;
     onDeleteAll: () => void;
+    setSignupOpen: (isOpen: boolean) => void; // hech narsa return qimaydi yani void
+    setLoginOpen: (isOpen: boolean) => void; 
  }
 /** hooklar react.16.8
  * ...value
@@ -17,29 +19,11 @@ interface HomeNavbarProps {
  useEffect -- har 3 Lifecycle methodi(faza)ni qurib beradi
 */
 export default function HomeNavbar(props: HomeNavbarProps) {
-    const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = props; // destruction usulidan foydalanib qo'lga olamz
+    const {cartItems, onAdd, onRemove, onDelete, onDeleteAll, setSignupOpen, setLoginOpen} = props; // destruction usulidan foydalanib qo'lga olamz
     const authMember = null; //true authinticed  bo'lmagan userlar un
-    const [count, setcount] = useState<number>(0); //o'zgaruvci va uni o'zgartruvchiga tenglab
-// value varebli va o'zgartruvchi methodni hosl qilib usega tenglab boshlng'ch qiymatini bln true qilamz typeni yozamz
-    const [value, setvalue] = useState<boolean>(true);
-
-// bu birinchi 1marta ishga tushadi array dependensy[]ni ichiga biror valueni qo'ysak yana qayta ishga tushadi
-    useEffect(() => { // 2ta argumenti bor 1-callback func. 2-array dependensy[]
-        console.log("componentDidMount", count);  // DATA FETCH(data olish)
-        setcount(count + 1); // birinchi kirib keganda 1taga oshryapti
-
-        return () => {  // return mantiq orqali componentWillUnmount fazasini xosil qilish mumkin
-            console.log("componentWillUnmount");
-        }
-    }, [value]); // componentDidUpdate: valuni qiymati o'zgarsa useeffect qata ishga tushadi buni qo'masak muammo bo'aldi
 
 
     /** HANDLERS **/
-
-// bu function, buton bosilsa tru bo'lsa false(qarama qarshi) qiladi
-    const buttonHandler = () => {
-        setvalue(!value);
-    }
 
     return ( //sintaks
     <div className="home-navbar">
@@ -88,7 +72,11 @@ export default function HomeNavbar(props: HomeNavbarProps) {
 {/* authinticed bo'lmagan user bo'lsa loginni ko'rsatsin*/}
                  {!authMember ? (
                  <Box>
-                    <Button variant="contained" className="login-button">
+                    <Button 
+                        variant="contained" 
+                        className="login-button" 
+                        onClick={() => setLoginOpen(true)} // login boslsa function ishga tushib login alerti ko'rinadi
+                    >
                          Login
                     </Button>
                  </Box>
@@ -105,13 +93,13 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                 <Stack className={"detail"}>
                     <Box className={"head-main-txt"}>World's Most Delicious Cousine</Box>
                     <Box className={"wel-txt"}>The Choice, not just a choice</Box>
-                    <Box className={"service-txt"}> {count} hours service</Box>
+                    <Box className={"service-txt"}> 24 hours service</Box>
                     <Box className={"signup"}>
                         {!authMember ? (
                         <Button 
                         variant={"contained"} 
                         className={"signup-button"} 
-                        onClick={buttonHandler}>{/* +1(!false,!true) bu soddalashgani agar argumnet bo'lsa to'liq bshi kk */}
+                        onClick={() => setSignupOpen(true)}>{/* bu boslsa funtion ishga tushib sign up alerti chiqadi */}
                             SIGN UP
                         </Button>
                         ) : null}

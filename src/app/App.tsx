@@ -34,19 +34,23 @@ function App() { // MUI componentlari
     {/* agar homePageda bo'lsa HomeNavbar aks holde Othernavbar ochiladi */}
       { location.pathname === "/" ? (
       <HomeNavbar 
-      cartItems={cartItems}
-      onAdd={onAdd}  
-      onRemove={onRemove} 
-      onDelete={onDelete} 
-      onDeleteAll={onDeleteAll}
+        cartItems={cartItems}
+        onAdd={onAdd}  
+        onRemove={onRemove} 
+        onDelete={onDelete} 
+        onDeleteAll={onDeleteAll}
+        setSignupOpen={setSignupOpen}
+        setLoginOpen={setLoginOpen}
       />
       ) : (
       <OtherNavbar 
-      cartItems={cartItems}
-      onAdd={onAdd} 
-      onRemove={onRemove} 
-      onDelete={onDelete} 
-      onDeleteAll={onDeleteAll} 
+        cartItems={cartItems}
+        onAdd={onAdd} 
+        onRemove={onRemove} 
+        onDelete={onDelete} 
+        onDeleteAll={onDeleteAll}
+        setSignupOpen={setSignupOpen}
+        setLoginOpen={setLoginOpen} 
       />
       )}
 {/* svitch(yo'naltirish) mantigi pathni solishtiryapti qiymati bir xil bo'lsa ochib beryapti */}
@@ -69,12 +73,12 @@ function App() { // MUI componentlari
       </Route>
     </Switch>
     <Footer/>
+
     <AuthenticationModal 
-    signupOpen={signupOpen}
-    loginOpen={loginOpen}
-    handleLoginClose={handleLoginClose}
-    handleSignupClose={handleSignupClose}
-    />
+      signupOpen={signupOpen}
+      loginOpen={loginOpen}
+      handleLoginClose={handleLoginClose}
+      handleSignupClose={handleSignupClose}/>
   </>
   );
 }
