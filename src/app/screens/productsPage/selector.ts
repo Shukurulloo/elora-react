@@ -1,11 +1,12 @@
 import { createSelector } from "reselect";
 import { AppRootState } from "../../../lib/types/screen";
 
-const selectProductsPage = (state: AppRootState) => state.productsPage;
+// ProductsPage dahldor bo'gan storejni qo'lga olamz stateni approt typesi bn belgilaymz
+const selectProductsPage = (state: AppRootState) => state.productsPage; // productsPageni qo'lga olamz
 
 export const retrieveRestaurant = createSelector(
     selectProductsPage, 
-    (ProductsPage) => ProductsPage.restaurant
+    (ProductsPage) => ProductsPage.restaurant // sliceda o'zgargan datani olib yuboramz
 );
 
 

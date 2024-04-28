@@ -21,6 +21,7 @@ import ProductService from "../../services/ProductService";
 import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/ config";
+import { CartItem } from "../../../lib/types/search";
 
 
 // sectional comp
@@ -45,8 +46,14 @@ const restaurantRetriever = createSelector(
      })
   );
 
+
+interface ChosenProductProps {
+  onAdd: (item: CartItem) => void;
+}
+
 // sectional comp
-export default function ChosenProduct() {
+export default function ChosenProduct(props: ChosenProductProps) {
+  const {onAdd} = props;
   const {productId} = useParams<{productId: string}>();
   const {setRestaurant, setChosenProduct} = actionDispatch(useDispatch());
   const {chosenProduct} = useSelector(chosenProductRetriever);

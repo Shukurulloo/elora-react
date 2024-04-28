@@ -18,6 +18,7 @@ import ProductService from '../../services/ProductService';
 import { ProductCollection } from '../../../lib/enums/product.enum';
 import { serverApi } from '../../../lib/ config';
 import { useHistory } from 'react-router-dom';
+import { CartItem } from '../../../lib/types/search';
 
 
 // sectional comp
@@ -25,33 +26,37 @@ import { useHistory } from 'react-router-dom';
 /** REDUX SLICE & SELECTOR **/
 // dispatch orqali data reducerga kirb keladi
 const actionDispatch = (dispatch: Dispatch) => ({ 
-    setProducts: (data: Product[]) => dispatch(setProducts(data)), 
+    setProducts: (data: Product[]) => dispatch(setProducts(data)), //
 });
 
 const productsRetriever = createSelector(retrieveProducts, (products) => ({ 
         products,
      }));
 
+interface ProductsProps {
+        onAdd: (item: CartItem) => void;
+    }
 
-export default function Products() {
+export default function Products(props: ProductsProps) {
+    const {onAdd} = props;
     const {setProducts} = actionDispatch(useDispatch());
     const {products} = useSelector(productsRetriever);
-    const [productSearch, setProductSearch] = useState<ProductInquiry>({
-        page: 1,
+    const [productSearch, setProductSearch] = useState<ProductInquiry>({ // maxsus object
+        page: 1,                // birichi sahifa
         limit: 8,
         order: "createdAt",
-        productCollection: ProductCollection.DISH,
-        search: "",
+        productCollection: ProductCollection.DISH,  // 1-pageda dishga tegishli 8ta data kelsin
+        search: "", //bo'sh bo'lsin
     });
-    const [searchText, setSearchText] = useState<string>("");
+    const [searchText, setSearchText] = useState<string>(""); // text qirish boshlangic qiymati bo'sh string
     const history = useHistory();
 
-    useEffect(() => {
+    useEffect(() => {  // backentdan datani olish
         const product = new ProductService();
-        product.getProducts(productSearch)
-        .then(data => setProducts(data))
+        product.getProducts(productSearch) //product servicedan kelgan datani reduxga set qilamz
+        .then(data => setProducts(data)) // set qilamz
         .catch(err => console.log(err));
-    }, [productSearch]);
+    }, [productSearch]);// productSearchni qiymati har safar o'zgarsa backentdan datani oladi array debendensy
     
     useEffect(() => {
         if(searchText === "") {
@@ -61,25 +66,25 @@ export default function Products() {
     }, [searchText]);
 
     /** HANDLERS ishlab chiqishlar **/
-
-    const searchCollectionHandler = (collection: ProductCollection) => {
-        productSearch.page = 1;
-        productSearch.productCollection = collection;
-        setProductSearch({ ...productSearch });
-    };
+// button bosilsa boshqa turdagi menu ciqsh 
+    const searchCollectionHandler = (collection: ProductCollection) => { // parametr
+        productSearch.page = 1;  //2,3-page turib butoni bossa 1ga o'tsin
+        productSearch.productCollection = collection; // productsearchni productCollectionini kirib kegan colectionga tengla
+        setProductSearch({ ...productSearch }); // spredOpertor o-li productSearch objni qiymayangi object ocilsin
+    };// spredOpertor o-li productSearch objni qiymatidan yangi object ocilsin va useefect qayta ishga tushadi
 
     const searchOrderHandler = (order: string) => {
         productSearch.page = 1;
-        productSearch.order = order;
+        productSearch.order = order; // orderni o'zgarsin
         setProductSearch({ ...productSearch });
     }
 
-    const searchProductHandler = () => {
+    const searchProductHandler = () => { // text qidirish
         productSearch.search = searchText;
         setProductSearch({...productSearch});
     }
 
-    const paginationHandler = (e: ChangeEvent<any>, value: number) => {
+    const paginationHandler = (e: ChangeEvent<any>, value: number) => { //pagination
         productSearch.page = value;
         setProductSearch({...productSearch})
     }
@@ -101,17 +106,17 @@ export default function Products() {
                         className={"single-search-input"}
                         name={"singleResearch"}
                         placeholder={"Type here"}
-                        value={searchText}
-                        onChange={(e) => setSearchText(e.target.value)}
+                        value={searchText} // yuqoridagini kiritamz
+                        onChange={(e) => setSearchText(e.target.value)} // event orqali inputga yozilgan qiymatni qo'lga olamz
                         onKeyDown={(e) => {
-                            if(e.key === "Enter") searchProductHandler();
+                            if(e.key === "Enter") searchProductHandler(); // enterni bossa qidiradi
                         }}
                         />
                         <Button
                           className={"single-button-search"}
                           variant="contained"
                           endIcon={<SearchIcon />}
-                          onClick={searchProductHandler}
+                          onClick={searchProductHandler} // qidirsh buttoni bosilsa searchProductHandler ishga tushadi
                           >
                             Search
                           </Button>
@@ -122,13 +127,13 @@ export default function Products() {
 
                 <Stack className={"dishes-filter-section"}>
                 <Stack className={"dishes-filter-box"}>
-                    <Button
+                    <Button      
                         variant={"contained"}
                         className={"order"}
                         color={
                             productSearch.order === "createdAt" ? "primary" : "secondary"
-                        }
-                        onClick={() => searchOrderHandler("createdAt")}
+                        }// button bosilsasearchOrderHandler ishga tushsin
+                        onClick={() => searchOrderHandler("createdAt")} // yangi ochilganlar birinchi
                     >
                         New
                     </Button>
@@ -164,7 +169,7 @@ export default function Products() {
                     <div className={"category-main"}>
                         <Button 
                             variant={"contained"} 
-                            color={
+                            color={  // agar oterga teng bo'lsa primary
                                 productSearch.productCollection === ProductCollection.OTHER 
                                 ? "primary" 
                                 : "secondary"
@@ -228,8 +233,8 @@ export default function Products() {
                     <Stack className={"product-wrapper"}>
                     {products.length !== 0 ? (
                         products.map((product: Product) => {
-                            const imagePath = `${serverApi}/${product.productImages[0]}`;
-                            const sizeVolume = product.productCollection === ProductCollection.DRINK 
+                            const imagePath = `${serverApi}/${product.productImages[0]}`;// har bir productni ichidan imgni qo'lga olamz
+                            const sizeVolume = product.productCollection === ProductCollection.DRINK // agar drink bo'lsa litr aks holda size
                             ? product.productVolume + " litre"
                             : product.productSize + " size";
                         return (
@@ -243,7 +248,19 @@ export default function Products() {
                                 sx={{ backgroundImage: `url(${imagePath})` }}
                             > 
                                  <div className={"product-sale"}>{sizeVolume}</div>
-                                 <Button className={"shop-btn"}>
+                                 <Button className={"shop-btn"}
+                                    onClick={(e) => {
+                                        console.log("BUTTON PRESSED!");
+                                        onAdd({
+                                            _id: product._id,
+                                            quantity: 1, // doim bitta tavar qo'shishi kerak
+                                            name: product.productName,
+                                            price: product.productPrice,
+                                            image: product.productImages[0],
+                                        });
+                                        e.stopPropagation(); // chosen pagega o'tishini to'xtatadi
+                                    }}
+                                 >
                                  <img
                                     src={"/icons/shopping-cart.svg"}
                                     style={{ display: "flex" }}

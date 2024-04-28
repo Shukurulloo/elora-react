@@ -16,8 +16,8 @@ export interface HomePageState {
 
 /** PRODUCTS PAGE **/
 export interface ProductsPageState {
-    restaurant: Member | null;
-    chosenProduct: Product | null;
+    restaurant: Member | null; // login bo'lgan yoki bo'lmagan
+    chosenProduct: Product | null; // tanlangan taom
     products: Product[];
 }
 

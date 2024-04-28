@@ -2,13 +2,18 @@ import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 import React, { useState, useEffect }from 'react';
+import { CartItem } from "../../../lib/types/search";
 
+interface HomeNavbarProps {
+    cartItems: CartItem[];
+ }
 /** hooklar react.16.8
  * ...value
  useState -- class componentni suniy state sini hosil qilib beradi
  useEffect -- har 3 Lifecycle methodi(faza)ni qurib beradi
 */
-export default function HomeNavbar() {
+export default function HomeNavbar(props: HomeNavbarProps) {
+    const {cartItems} = props; // destruction usuli
     const authMember = null; //true authinticed  bo'lmagan userlar un
     const [count, setcount] = useState<number>(0); //o'zgaruvci va uni o'zgartruvchiga tenglab
 // value varebli va o'zgartruvchi methodni hosl qilib usega tenglab boshlng'ch qiymatini bln true qilamz typeni yozamz
@@ -68,7 +73,7 @@ export default function HomeNavbar() {
                     <NavLink to="/help" activeClassName={"underline"}>Help</NavLink>
                  </Box>
 
-                 <Basket/>
+                <Basket cartItems={cartItems} />
 
 {/* authinticed bo'lmagan user bo'lsa loginni ko'rsatsin*/}
                  {!authMember ? (
