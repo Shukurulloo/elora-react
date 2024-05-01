@@ -7,9 +7,26 @@ import LocationIcon from "@mui/icons-material/LocationOn";
 import PausedOrders from "./PausedOrders";
 import ProcessOrders from "./ProcessOrders";
 import FinishedOrders from "./FinishedOrders";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "@reduxjs/toolkit";
+import { setPausedOrders, setProcessOrders, setFinishedOrders } from "./slice";
+
 import "../../../css/order.css"
+import { Order } from "../../../lib/types/order";
+
+/** REDUX SLICE & SELECTOR **/
+// dispatch orqali data reducerga kirb keladi
+const actionDispatch = (dispatch: Dispatch) => ({ //vareblga tenglab dispatchni typesi bn kiritib unga 1ta argument
+    setPausedOrders: (data: Order[]) => dispatch(setPausedOrders(data)), // setPopularDishes dispatchga tushadi uni ichida setPopularDishesni clicedan chaqirib uni ichiga yuboriladigon datani payload qilamz
+    setProcessOrders: (data: Order[]) => dispatch(setProcessOrders(data)),
+    setFinishedOrders: (data: Order[]) => dispatch(setFinishedOrders(data)),
+});// setPopularDishes comandasini setPopularDishes reducer orqli amalga oshrmiz
+
 
 export default function OrdersPage() {
+    const { setPausedOrders, setProcessOrders, setFinishedOrders } = actionDispatch(
+        useDispatch()
+    ); 
     // bular hooklar tab o'zgarganda qiymat keladi va hooklar orqali valueni qiymatini o'zgartiradi
     const [value, setValue] = useState("1");// boshlang'ich qiymati 1 deyildi
 

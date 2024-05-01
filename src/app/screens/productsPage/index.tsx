@@ -6,13 +6,13 @@ import Products from './Products';
 import "../../../css/products.css"
 import { CartItem } from '../../../lib/types/search';
 
-interface ProductsPageProps {
+interface ProductsPageProps { // shu qiymat kelishini takidlaymz
   onAdd: (item: CartItem) => void;
 }
 
 // screen comp
 export default function ProductsPage(props: ProductsPageProps) {
-    const {onAdd} = props;
+    const {onAdd} = props; // distraction methotini ishlatib props ni ichidan odadd ni olib ber
   // bu hook ichidan path qiymatini olamz u orqali nested routin hosil qilamz
     const products = useRouteMatch();
     console.log("products", products);

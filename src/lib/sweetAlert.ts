@@ -1,9 +1,9 @@
-/** SweetAlertHandling **/
-import Swal from "sweetalert2";
+/** SweetAlertHandling  Alertlar **/
+import Swal from "sweetalert2"; // packape install
 import { Messages } from "./config";
 
 export const sweetErrorHandling = async (err: any) => {
-  const error = err.response?.data ?? err;
+  const error = err.response?.data ?? err; // errorni ichidagi response uni ichidagi data
   const message = error?.message ?? Messages.error1;
   await Swal.fire({ //backentdan kelayotgan error bo'lsa frontenda qilgan error ishgatushsin
     icon: "error",

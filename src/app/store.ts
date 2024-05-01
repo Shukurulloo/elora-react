@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import HomePageReducer from './screens/homePage/slice';
 import ProductsPageReducer from './screens/productsPage/slice';
 import reduxLogger from 'redux-logger'; // externel packageni yukladik 3.0.
+import OrersPageReducer from './screens/ordersPage/slice';
 
 // reduxLogger - yordamchi tool, redux storeni ichida qanday data borligi, qanday o'zrgarayotganini aniq (loggin) consol.logda ko'rsatib beradi
 
@@ -12,6 +13,7 @@ export const store = configureStore({
   reducer: {
     homePage: HomePageReducer,  // HomePageReducerni olib storega  bog'laymiz
     productsPage: ProductsPageReducer,
+    ordersPage: OrersPageReducer,
   },
 });
 

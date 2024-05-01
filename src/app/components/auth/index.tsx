@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";// material-ui install
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -46,8 +46,8 @@ interface AuthenticationModalProps { // 4xil malumot 2ta property statev va 2ta 
 export default function AuthenticationModal(props: AuthenticationModalProps) {
   const { signupOpen, loginOpen, handleSignupClose, handleLoginClose } = props;
   const classes = useStyles();
-  const [memberNick, setMemberNick] = useState<string>("");
-  const [memberPhone, setMemberPhone] = useState<string>("");
+  const [memberNick, setMemberNick] = useState<string>(""); // boshlang'ich qiymati bo'sh string
+  const [memberPhone, setMemberPhone] = useState<string>(""); // primitiv variablelar valuesi o'zgarsa setMemberPhone o'zini qiymatini o'zgartiradi
   const [memberPassword, setMemberPassword] = useState<string>("");
   const {setAuthMember} = useGlobals();
 
@@ -55,7 +55,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 
   const handleUsername = (e: T) => {
     console.log(e.target.value);
-    setMemberNick(e.target.value);
+    setMemberNick(e.target.value); 
   };
   const handlePhone = (e: T) => {
     setMemberPhone(e.target.value);
@@ -64,35 +64,35 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
     setMemberPassword(e.target.value);
   };
   const handlePasswordKeyDown = (e: T) => {
-    if(e.key === "Enter" && signupOpen) {
-      handleSignupRequest().then();
+    if(e.key === "Enter" && signupOpen) { // agar signup open bo'gan holda key enterga teng bo'lsa
+      handleSignupRequest().then(); //shu handleSignupRequest amalga oshsin
     }else if (e.key === "Enter" && loginOpen) {
       handleLoginRequest().then();
     }
   };
 
 
-  const handleSignupRequest = async () => {
+  const handleSignupRequest = async () => { // async
     try {
-      const isFullfill = 
+      const isFullfill = // validation mantiq
       memberNick !== "" && memberPhone !== "" && memberPassword !== "";
-      if(!isFullfill) throw new Error(Messages.error3);
+      if(!isFullfill) throw new Error(Messages.error3); // agar data kritlmasa hatolik bersin
 
       const signupInput: MemberInput = {
-        memberNick: memberNick,
+        memberNick: memberNick,  // kiritilishi shart malumotlr
         memberPhone: memberPhone,
         memberPassword: memberPassword,
       };
 
-      const member = new MemberService();
-      const result = await member.signup(signupInput);
+      const member = new MemberService(); // object hosl qilamz
+      const result = await member.signup(signupInput); //signupInputni backentga yuboramz
 
       setAuthMember(result);
-      handleSignupClose();
+      handleSignupClose(); // modal auto yoplsin
      }  catch (err) {
       console.log(err);
       handleSignupClose();
-      sweetErrorHandling(err).then();
+      sweetErrorHandling(err).then(); // err bo'lsa alertimiz ishga tushsin
     }
   }
 
@@ -146,7 +146,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 id="outlined-basic"
                 label="username"
                 variant="outlined"
-                onChange={handleUsername}
+                onChange={handleUsername} // onChange bo'lsa handleUsername ishga tushsin
               />
               <TextField
                 sx={{ my: "17px" }}
@@ -160,7 +160,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 label="password"
                 variant="outlined"
                 onChange={handlePassword}
-                onKeyDown={handlePasswordKeyDown}
+                onKeyDown={handlePasswordKeyDown} // key bosla
               />
               <Fab
                 sx={{ marginTop: "30px", width: "120px" }}

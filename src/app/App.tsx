@@ -27,17 +27,17 @@ function App() { // MUI componentlari
   const location = useLocation() //bu hook uning natijasi object, pathname: orqali pageni bilamz
   const {setAuthMember} = useGlobals();
   const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = useBasket(); //useBasket customized hookdan qabul qilamz
-  const [signupOpen, setSignupOpen] = useState<boolean>(false);
+  const [signupOpen, setSignupOpen] = useState<boolean>(false); // boshlang/ich qiymati false
   const [loginOpen, setLoginOpen] = useState<boolean>(true);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   /** HANDLERS */
 
-  const handleSignupClose = () => setSignupOpen(false);
+  const handleSignupClose = () => setSignupOpen(false); // handleSignupClose ishga tushsa false bo'lsin
   const handleLoginClose = () => setLoginOpen(false);
 
   const handleLogoutClick = (e: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(e.currentTarget);
+    setAnchorEl(e.currentTarget); //currentTargetni qiymatini qabul qilamz
   }
   const handleCloseLogout = () => setAnchorEl(null);
   const handleLogoutRequest = async () => {
@@ -60,7 +60,7 @@ function App() { // MUI componentlari
     {/* agar homePageda bo'lsa HomeNavbar aks holde Othernavbar ochiladi */}
       { location.pathname === "/" ? (
       <HomeNavbar 
-        cartItems={cartItems}
+        cartItems={cartItems} // hanldeklarni navbarga pass qilamz
         onAdd={onAdd}  
         onRemove={onRemove} 
         onDelete={onDelete} 
@@ -108,7 +108,7 @@ function App() { // MUI componentlari
     </Switch>
     <Footer/>
 
-    <AuthenticationModal 
+    <AuthenticationModal // import qoilamz
       signupOpen={signupOpen}
       loginOpen={loginOpen}
       handleLoginClose={handleLoginClose}

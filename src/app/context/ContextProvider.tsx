@@ -4,9 +4,9 @@ import { Member } from "../../lib/types/member";
 import { GlobalContext } from "../hooks/useGlobals";
 
 const ContextProvider: React.FC<{children: ReactNode}> = ({children}) => {
-    const cookies = new Cookies();
+    const cookies = new Cookies(); // browerdagi cookilarni qo'lga olamz
     if(!cookies.get("accessToken")) localStorage.removeItem("memberData"); // cokie o'chirilsa browserni localstoragesida qolib ketgan datani o'chiradi hafszlik uchun
-
+    // cokkini vaqti tugasa
 
 /** har yangilanganda browserdan birinchi access tokkenni tekshiradi
  * saqlangan bo'lsagina localstoragedan datani qayta qabul qiladi

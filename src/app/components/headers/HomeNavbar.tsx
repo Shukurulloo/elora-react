@@ -8,7 +8,7 @@ import { serverApi } from "../../../lib/config";
 import { Logout } from "@mui/icons-material";
 
 interface HomeNavbarProps {
-    cartItems: CartItem[];
+    cartItems: CartItem[]; // kelishi takidlaymz
     onAdd: (item: CartItem) => void;
     onRemove: (item: CartItem) => void;
     onDelete: (item: CartItem) => void;
@@ -28,7 +28,7 @@ interface HomeNavbarProps {
 export default function HomeNavbar(props: HomeNavbarProps) {
     const {
         cartItems, 
-        onAdd, 
+        onAdd, // destruction usulidan foydalanib qo'lga olamz
         onRemove, 
         onDelete, 
         onDeleteAll, 
@@ -38,7 +38,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         anchorEl,
         handleCloseLogout,
         handleLogoutRequest,
-    } = props; // destruction usulidan foydalanib qo'lga olamz
+    } = props; 
     const {authMember} = useGlobals(); // authinticed  bo'gan bo'lmagan userlar un
 
 
@@ -80,7 +80,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                     <NavLink to="/help" activeClassName={"underline"}>Help</NavLink>
                  </Box>
 
-                <Basket 
+                <Basket // basketga props orqali pass qilamz
                   cartItems={cartItems} 
                   onAdd={onAdd}  
                   onRemove={onRemove} 
@@ -113,7 +113,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                  )}
 
                 <Menu
-                    anchorEl={anchorEl}
+                    anchorEl={anchorEl} // imgga bosilsa anchorEl shu ishga tushib logout ko'rinsin
                     id="account-menu"
                     open={Boolean(anchorEl)}
                     onClose={handleCloseLogout}

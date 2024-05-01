@@ -11,7 +11,7 @@ import { CartItem } from "../../../lib/types/search";
 import { serverApi } from "../../../lib/config";
 
 interface BasketProps {
-  cartItems: CartItem[];
+  cartItems: CartItem[]; // kelishi takidlaymz
   onAdd: (item: CartItem) => void;
   onRemove: (item: CartItem) => void;
   onDelete: (item: CartItem) => void;
@@ -28,7 +28,7 @@ export default function Basket(props: BasketProps) {
     0  // boshlang'ich valusei 0 ga teng
   ); 
   const shippingCost: number = itemsPrice < 100 ? 5 : 0; // agar itemprice 100$dan kam bo'lsa yetkazish tolovi 5$ , 100$ga teng va yuqori bolsa tekn
-  const totalPrice = (itemsPrice + shippingCost).toFixed(1);
+  const totalPrice = (itemsPrice + shippingCost).toFixed(1); // jami hisob
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -93,8 +93,8 @@ export default function Basket(props: BasketProps) {
         <Stack className={"basket-frame"}>
           <Box className={"all-check-box"}>
             {cartItems.length === 0 ? (
-            <div>Cart is empty!</div>
-            ) :  (
+            <div>Cart is empty!</div> //agar lengt 0 ga teng bo'lsa qaytarsin
+            ) :  ( // aks holda bu
             <Stack flexDirection={"row"}>
               <div>Cart Products:</div>
               <DeleteForeverIcon
@@ -138,7 +138,7 @@ export default function Basket(props: BasketProps) {
              
             </Box>
           </Box>
-          {cartItems.length !== 0 ? (
+          {cartItems.length !== 0 ? ( // product bo'lsa bu bo'lmasa bo'sh string
                <Box className={"basket-order"}>
                <span className={"price"}>
                 Total: ${totalPrice} ({itemsPrice} + {shippingCost})

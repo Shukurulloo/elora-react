@@ -7,7 +7,7 @@ import { serverApi } from "../../../lib/config";
 import { Logout } from "@mui/icons-material";
 
 interface OtherNavbarProps {
-   cartItems: CartItem[];
+   cartItems: CartItem[];  //kirib kelishini takidlaymiz
    onAdd: (item: CartItem) => void;
    onRemove: (item: CartItem) => void;
    onDelete: (item: CartItem) => void;
@@ -73,7 +73,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
              </Box>
 
                <Basket 
-                  cartItems={cartItems} 
+                  cartItems={cartItems} // basketga props orqali yuboramz
                   onAdd={onAdd}  
                   onRemove={onRemove} 
                   onDelete={onDelete} 
@@ -135,7 +135,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                                 zIndex: 0,
                             },
                         },
-                    }}
+                    }} 
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >

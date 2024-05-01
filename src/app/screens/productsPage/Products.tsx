@@ -38,7 +38,7 @@ interface ProductsProps {
     }
 
 export default function Products(props: ProductsProps) {
-    const {onAdd} = props;
+    const {onAdd} = props; // distraction
     const {setProducts} = actionDispatch(useDispatch());
     const {products} = useSelector(productsRetriever);
     const [productSearch, setProductSearch] = useState<ProductInquiry>({ // maxsus object
@@ -248,16 +248,16 @@ export default function Products(props: ProductsProps) {
                                 sx={{ backgroundImage: `url(${imagePath})` }}
                             > 
                                  <div className={"product-sale"}>{sizeVolume}</div>
-                                 <Button className={"shop-btn"}
-                                    onClick={(e) => {
-                                        onAdd({
+                                 <Button className={"shop-btn"} // bu savatcha buttoni
+                                    onClick={(e) => { // bosilganda eventni qo'lga olib
+                                        onAdd({ //onAdd ishga tushuib inputni pass qilamz
                                             _id: product._id,
                                             quantity: 1, // doim bitta tavar qo'shishi kerak
                                             name: product.productName,
                                             price: product.productPrice,
-                                            image: product.productImages[0],
+                                            image: product.productImages[0], // birinchi productni qiymatini pass qilamz
                                         });
-                                        e.stopPropagation(); // chosen pagega o'tishini to'xtatadi
+                                        e.stopPropagation(); // bo'limga bosilsa chosen pagega o'tishini to'xtatadi
                                     }}
                                  >
                                  <img

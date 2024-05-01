@@ -53,7 +53,7 @@ interface ChosenProductProps {
 
 // sectional comp
 export default function ChosenProduct(props: ChosenProductProps) {
-  const {onAdd} = props;
+  const {onAdd} = props; // distraction onAddni propsdan qabul qilamz
   const {productId} = useParams<{productId: string}>();
   const {setRestaurant, setChosenProduct} = actionDispatch(useDispatch());
   const {chosenProduct} = useSelector(chosenProductRetriever);

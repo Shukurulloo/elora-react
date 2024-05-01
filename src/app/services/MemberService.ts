@@ -37,15 +37,16 @@ class MemberService {
         }
     }
 
-    public async signup(input: MemberInput): Promise<Member> {
+    public async signup(input: MemberInput): Promise<Member> { // aurth
         try {
             const url = this.path + "/member/signup"
             const result = await axios.post(url, input, {withCredentials: true}); // withCredentials backent fronendga cokieni joylaydi
-            console.log("signup:", result);
+            console.log("signup:", result);  // axsios post orqali  3ta argument , 1- url 2-parametr
 
-            const member: Member = result.data.member;
+            const member: Member = result.data.member; // member bo'limidan qabul qilamz auth tokkenni joyladi
             console.log("member:", member);
-            localStorage.setItem("memberData", JSON.stringify(member))
+            localStorage.setItem("memberData", JSON.stringify(member)) //stringify backentdan kegan data object bo'gan uchun
+            // localStorageGA memberData nomi bilan auth bogan userni json formatida saqla
 
             return member;
         } catch(err) {
@@ -57,7 +58,7 @@ class MemberService {
      public async login(input: LoginInput): Promise<Member> {
         try {
             const url = this.path + "/member/login";
-            const result = await axios.post(url, input, {withCredentials: true});
+            const result = await axios.post(url, input, {withCredentials: true}); // axsios post orqali  3ta argument , 1- url 2-parametr
             console.log("login:", result);
 
             const member: Member = result.data.member;
