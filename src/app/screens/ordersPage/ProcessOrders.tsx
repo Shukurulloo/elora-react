@@ -6,10 +6,15 @@ import moment from "moment";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrieveProcessOrders } from "./selector";
-import { serverApi } from "../../../lib/config";
-import { Order, OrderItem } from "../../../lib/types/order";
+import { Messages, serverApi } from "../../../lib/config";
+import { Order, OrderItem, OrderUpdateInput } from "../../../lib/types/order";
 import { Product } from "../../../lib/types/product";
 import { Console } from "console";
+import { useGlobals } from "../../hooks/useGlobals";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import OrderService from "../../services/OrderService";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { T } from "../../../lib/types/common";
 
 /** REDUX SLICE & SELECTOR **/
 const processOrdersRetriever = createSelector( //yuklangan datani retriever orqali qabul qilish
@@ -17,8 +22,44 @@ const processOrdersRetriever = createSelector( //yuklangan datani retriever orqa
     (processOrders) => ({ processOrders }) // 2-argument
 );
 
-  export default function ProcessOrders() { 
+interface ProcessOrdersProps {
+    setValue: (input: string) => void;
+}
+
+  export default function ProcessOrders(props: ProcessOrdersProps) { 
+    const { setValue } = props;
+    const {authMember, setOrderBuilder} = useGlobals();
     const {processOrders} = useSelector(processOrdersRetriever);  //useSelector hookiga pas qilib pausedOrdersni qolga olamz
+
+      /** HANDLERS **/
+
+    const finishOrderHandler = async (e: T) => {
+        try{
+            if(!authMember) throw new Error(Messages.error2)
+            //PAYMENT PROCESS
+
+            const orderId = e.target.value;
+            const input: OrderUpdateInput = {
+                orderId: orderId, 
+                orderStatus: OrderStatus.FINISH, //FINISHga o'zgartir
+            };
+            
+            const confirmation = window.confirm(
+                "hav you received your order?"
+            );
+            if(confirmation) {
+                const order = new OrderService();
+                await order.updateOrder(input);
+
+                // => PROCESS ORDER ishga tushsa 3ga o'zgar
+                setValue("3");
+                setOrderBuilder(new Date()); // Refresh
+            }
+        }catch(err) {
+            console.log(err);
+            sweetErrorHandling(err).then();
+        }
+    }
 
     return(
         <TabPanel value={"2"}>
@@ -69,7 +110,12 @@ const processOrdersRetriever = createSelector( //yuklangan datani retriever orqa
                                 <p className={"data-compl"}>
                                   {moment().format("YY-MM-DD HH:mm")}
                                 </p>
-                                <Button variant="contained" className={"verify-button"}>
+                                <Button 
+                                value={order._id}
+                                variant="contained" 
+                                className={"verify-button"}
+                                onClick={finishOrderHandler}
+                                >
                                    Verify to Fulfil
                                 </Button>
                             </Box>

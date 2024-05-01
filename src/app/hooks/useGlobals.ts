@@ -4,6 +4,8 @@ import { Member } from "../../lib/types/member";
 interface GlobalInterface {
     authMember: Member | null; // member yoki member emas
     setAuthMember: (member: Member | null) => void;
+    orderBuilder: Date;
+    setOrderBuilder: (input: Date) => void
 }
 
 // createContext methoti ni
