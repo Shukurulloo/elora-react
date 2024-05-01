@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent } from "react";
+import { useState, SyntheticEvent, useEffect } from "react";
 import { Container, Stack, Box } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -12,7 +12,9 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { setPausedOrders, setProcessOrders, setFinishedOrders } from "./slice";
 
 import "../../../css/order.css"
-import { Order } from "../../../lib/types/order";
+import { Order, OrderInquiry } from "../../../lib/types/order";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import OrderService from "../../services/OrderService";
 
 /** REDUX SLICE & SELECTOR **/
 // dispatch orqali data reducerga kirb keladi
@@ -29,7 +31,33 @@ export default function OrdersPage() {
     ); 
     // bular hooklar tab o'zgarganda qiymat keladi va hooklar orqali valueni qiymatini o'zgartiradi
     const [value, setValue] = useState("1");// boshlang'ich qiymati 1 deyildi
+    const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
+        page: 1,
+        limit: 5,
+        orderStatus: OrderStatus.PAUSE,
+    });
 
+    useEffect(() => {
+        const order = new OrderService();
+
+        order
+        .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PAUSE})
+        .then((data) => setPausedOrders(data))
+        .catch((err) => console.log(err));
+
+        order
+        .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PROCESS})
+        .then((data) => setProcessOrders(data))
+        .catch((err) => console.log(err));
+
+        order
+        .getMyOrders({...orderInquiry, orderStatus: OrderStatus.FINISH})
+        .then((data) => setFinishedOrders(data))
+        .catch((err) => console.log(err));
+    }, [orderInquiry])
+    
+
+    /** HANDLERS **/
     // handleChange functioni orqali tab panel o'zgaradi
     const handleChange = (e: SyntheticEvent, newValue: string) => {
         setValue(newValue);

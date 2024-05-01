@@ -28,7 +28,7 @@ export interface Order {
     updatedAt: Date;
     /** from aggregation **/
     orderItems: OrderItem[];
-    productdata: Product[];  // productdan tashkil topgan array
+    productData: Product[];  // productdan tashkil topgan array
 }
 
 export interface OrderInquiry {  // kirib kelayotgan malumotlar uchn
