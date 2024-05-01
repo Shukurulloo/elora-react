@@ -13,7 +13,7 @@ export interface Product {
     productImages: string[]; // stringdan iborat array
     productViews: number;
     createdAt: Date;
-    updatedAt: Date
+    updatedAt: Date;
 }
 
 export interface ProductInquiry {

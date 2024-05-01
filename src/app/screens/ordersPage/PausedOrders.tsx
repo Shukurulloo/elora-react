@@ -22,7 +22,7 @@ export default function PausedOrders() {
     return(
         <TabPanel value={"1"}>
             <Stack>
-                {/* bu raqamlar orderlarni soni */}
+                {/* pausedOrders orderlarni soni */}
                 {pausedOrders?.map((order: Order) => {
                     return(
                         <Box key={order._id} className={"order-main-box"}>
