@@ -7,7 +7,7 @@ const Footers = styled.div`
   width: 100%;
   height: 590px;
   display: flex;
-  background: #343434;
+  background-color: #5f4c96;
   background-size: cover;
 `;
 
@@ -20,12 +20,12 @@ export default function Footer() {
         <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack flexDirection={"column"} style={{ width: "340px" }}>
             <Box>
-              <img width={"100px"} src={"/icons/burak.svg"} />
+            <h1>ELORA</h1>
             </Box>
             <Box className={"foot-desc-txt"}>
-              Focusing on the gourmet Turkish breakfast as well as the youth
-              society, CZN Burak Gurme aims to bring Turkish cuisine back. CZN
-              Burak Gurme creates an illusion with its cuisine.
+            Focusing on a sophisticated dining experience as well as a vibrant atmosphere, 
+            Elora aims to redefine contemporary cuisine. Elora creates an enchanting illusion with its gourmet dishes and elegant presentation, 
+            bringing together tradition and innovation to delight the senses.
             </Box>
             <Box className="sns-context">
               <img src={"/icons/facebook.svg"} />

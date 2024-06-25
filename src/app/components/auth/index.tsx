@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";// material-ui install
+import { makeStyles } from "@material-ui/core/styles"; // material-ui install
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -36,7 +36,8 @@ const ModalImg = styled.img`
   margin-left: 10px;
 `;
 
-interface AuthenticationModalProps { // 4xil malumot 2ta property statev va 2ta function
+interface AuthenticationModalProps {
+  // 4xil malumot 2ta property statev va 2ta function
   signupOpen: boolean;
   loginOpen: boolean;
   handleSignupClose: () => void;
@@ -49,13 +50,13 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const [memberNick, setMemberNick] = useState<string>(""); // boshlang'ich qiymati bo'sh string
   const [memberPhone, setMemberPhone] = useState<string>(""); // primitiv variablelar valuesi o'zgarsa setMemberPhone o'zini qiymatini o'zgartiradi
   const [memberPassword, setMemberPassword] = useState<string>("");
-  const {setAuthMember} = useGlobals();
+  const { setAuthMember } = useGlobals();
 
   /** HANDLES **/
 
   const handleUsername = (e: T) => {
     console.log(e.target.value);
-    setMemberNick(e.target.value); 
+    setMemberNick(e.target.value);
   };
   const handlePhone = (e: T) => {
     setMemberPhone(e.target.value);
@@ -64,22 +65,23 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
     setMemberPassword(e.target.value);
   };
   const handlePasswordKeyDown = (e: T) => {
-    if(e.key === "Enter" && signupOpen) { // agar signup open bo'gan holda key enterga teng bo'lsa
+    if (e.key === "Enter" && signupOpen) {
+      // agar signup open bo'gan holda key enterga teng bo'lsa
       handleSignupRequest().then(); //shu handleSignupRequest amalga oshsin
-    }else if (e.key === "Enter" && loginOpen) {
+    } else if (e.key === "Enter" && loginOpen) {
       handleLoginRequest().then();
     }
   };
 
-
-  const handleSignupRequest = async () => { // async
+  const handleSignupRequest = async () => {
+    // async
     try {
       const isFullfill = // validation mantiq
-      memberNick !== "" && memberPhone !== "" && memberPassword !== "";
-      if(!isFullfill) throw new Error(Messages.error3); // agar data kritlmasa hatolik bersin
+        memberNick !== "" && memberPhone !== "" && memberPassword !== "";
+      if (!isFullfill) throw new Error(Messages.error3); // agar data kritlmasa hatolik bersin
 
       const signupInput: MemberInput = {
-        memberNick: memberNick,  // kiritilishi shart malumotlr
+        memberNick: memberNick, // kiritilishi shart malumotlr
         memberPhone: memberPhone,
         memberPassword: memberPassword,
       };
@@ -89,17 +91,17 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 
       setAuthMember(result);
       handleSignupClose(); // modal auto yoplsin
-     }  catch (err) {
+    } catch (err) {
       console.log(err);
       handleSignupClose();
       sweetErrorHandling(err).then(); // err bo'lsa alertimiz ishga tushsin
     }
-  }
+  };
 
   const handleLoginRequest = async () => {
     try {
       const isFullfill = memberNick !== "" && memberPassword !== "";
-      if(!isFullfill) throw new Error(Messages.error3);
+      if (!isFullfill) throw new Error(Messages.error3);
 
       const loginInput: LoginInput = {
         memberNick: memberNick,
@@ -111,21 +113,21 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 
       setAuthMember(result);
       handleLoginClose();
-     }  catch (err) {
+    } catch (err) {
       console.log(err);
       handleLoginClose();
       sweetErrorHandling(err).then();
     }
-  }
+  };
 
   return (
     <div>
-      <Modal  // sign up un
+      <Modal // sign up un
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={signupOpen} // buyerda true bo'lsa signup modal chiqadi
-        onClose={handleSignupClose}  // tashqariga bossa modal auto yopiladi
+        onClose={handleSignupClose} // tashqariga bossa modal auto yopiladi
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -138,7 +140,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
             direction={"row"}
             sx={{ width: "800px" }}
           >
-            <ModalImg src={"/img/auth.webp"} alt="camera" />
+            <ModalImg src={"/img/auth.jpg"} alt="camera" />
             <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
               <h2>Signup Form</h2>
               <TextField
@@ -176,7 +178,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
         </Fade>
       </Modal>
 
-      <Modal  // login uchun
+      <Modal // login uchun
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
@@ -194,7 +196,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
             direction={"row"}
             sx={{ width: "700px" }}
           >
-            <ModalImg src={"/img/auth.webp"} alt="camera" />
+            <ModalImg src={"/img/auth.jpg"} alt="camera" />
             <Stack
               sx={{
                 marginLeft: "65px",
@@ -209,7 +211,6 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 variant="outlined"
                 sx={{ my: "10px" }}
                 onChange={handleUsername}
-                
               />
               <TextField
                 id={"outlined-basic"}

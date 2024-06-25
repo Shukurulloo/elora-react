@@ -45,8 +45,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
         >
             <Box>
                 <NavLink to="/">
-                    <img 
-                    className="brand-logo" src="/icons/burak.svg" />
+                <h1>ELORA</h1>
                 </NavLink>
             </Box>
             <Stack className="links">

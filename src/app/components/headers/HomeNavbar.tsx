@@ -53,8 +53,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             {/* box oxirgi induvidual bo'g'in hisoblanadi uni ichia matn kiritiladi */}
                 <Box>
                     <NavLink to="/">
-                        <img 
-                        className="brand-logo" src="/icons/burak.svg" />
+                  <h1>ELORA</h1>
                     </NavLink>
                 </Box>
                 <Stack className="links">
@@ -86,6 +85,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                   onRemove={onRemove} 
                   onDelete={onDelete} 
                   onDeleteAll={onDeleteAll}
+                  
                   />
 
 {/* authinticed bo'lmagan user bo'lsa loginni ko'rsatsin*/}
@@ -149,7 +149,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                 >
                     <MenuItem onClick={handleLogoutRequest}>
                         <ListItemIcon>
-                            <Logout fontSize="small" style={{ color: 'blue' }} />
+                            <Logout fontSize="small" style={{ color: 'red' }} />
                         </ListItemIcon>
                         Logout
                     </MenuItem>
@@ -159,8 +159,8 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             </Stack>
             <Stack className={"header-frame"}>
                 <Stack className={"detail"}>
-                    <Box className={"head-main-txt"}>World's Most Delicious Cousine</Box>
-                    <Box className={"wel-txt"}>The Choice, not just a choice</Box>
+                    <Box className={"head-main-txt"}>Discover Culinary Excellence</Box>
+                    <Box className={"wel-txt"}>Where Choice Meets Perfection</Box>
                     <Box className={"service-txt"}> 24 hours service</Box>
                     <Box className={"signup"}>
                         {!authMember ? (
@@ -174,7 +174,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                     </Box>
                 </Stack>
                 <Box className={"logo-frame"}>
-                    <div className={"logo-img"}></div>
+                    {/* <div className={"logo-img"}></div> */}
                 </Box>
             </Stack>
         </Container>

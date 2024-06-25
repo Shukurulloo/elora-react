@@ -25,7 +25,7 @@ function App() { // MUI componentlari
   const {setAuthMember} = useGlobals();
   const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = useBasket(); //useBasket customized hookdan qabul qilamz
   const [signupOpen, setSignupOpen] = useState<boolean>(false); // boshlang/ich qiymati false
-  const [loginOpen, setLoginOpen] = useState<boolean>(true);
+  const [loginOpen, setLoginOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   /** HANDLERS */
