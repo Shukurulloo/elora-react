@@ -159,9 +159,9 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             </Stack>
             <Stack className={"header-frame"}>
                 <Stack className={"detail"}>
-                    <Box className={"head-main-txt"}>Discover Culinary Excellence</Box>
+                    {/* <Box className={"head-main-txt"}>Discover Culinary Excellence</Box>
                     <Box className={"wel-txt"}>Where Choice Meets Perfection</Box>
-                    <Box className={"service-txt"}> 24 hours service</Box>
+                    <Box className={"service-txt"}> 24 hours service</Box> */}
                     <Box className={"signup"}>
                         {!authMember ? (
                         <Button 

@@ -35,7 +35,35 @@
 .home-navbar .navbar-container .menu .links .login-button {
   background: #136deb;
   color: #f8f8ff;
+  font-family: "Roboto Serif";
 }
+.home-navbar .navbar-container .menu .links .login-button::before,
+.home-navbar .navbar-container .menu .links .login-button::after {
+  content: '✦'; /* Yulduzcha belgisi */
+  position: absolute;
+  font-size: 24px; /* Yulduzcha kattaligi */
+  color: #ffeb3b; /* Yulduzcha rangi */
+  opacity: 0; /* Yulduzcha ko'rinmas holatda bo'ladi */
+  transition: all 0.3s ease; /* Silliq o'tish */
+}
+
+.home-navbar .navbar-container .menu .links .login-button::before {
+  top: -10px;
+  left: 10px;
+}
+
+.home-navbar .navbar-container .menu .links .login-button::after {
+  bottom: -10px;
+  right: 10px;
+}
+
+.home-navbar .navbar-container .menu .links .login-button:hover::before,
+.home-navbar .navbar-container .menu .links .login-button:hover::after {
+  opacity: 1; /* Yulduzchalarni ko'rinadigan qilish */
+  top: -30px; /* Hover holatida yuqoriga siljitish */
+  bottom: -30px; /* Hover holatida pastga siljitish */
+}
+
 .home-navbar .navbar-container .menu h1 {
   font-family: cursive;
   font-size: 42px;
@@ -87,17 +115,23 @@
 }
 
 .home-navbar .navbar-container .header-frame {
-  margin-top: 142px;
+  margin-top: 112px;
   height: 462px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: flex-end; 
+  /* border: 1px solid yellow; */
+  /* margin-left: 43%; */
+
 }
 
 .home-navbar .navbar-container .header-frame .detail {
   width: 510px;
   display: flex;
   flex-direction: column;
+  /* border: 1px solid yellow; */
+
 }
 
 .home-navbar .navbar-container .header-frame .detail .head-main-txt {
@@ -139,21 +173,53 @@
 
 .home-navbar .navbar-container .detail .signup {
   margin-top: 73px;
+  /* border: 1px solid yellow; */
 }
 
 .home-navbar .navbar-container .detail .signup-button {
+  position: relative; /* Pseudo-elementlar uchun tugma asosini o'rnatish */
   width: 210px;
   height: 60px;
   border-radius: 4px;
   background: #1976d2;
   text-align: center;
-  font-family: Poppins;
+  font-family: "Roboto Serif";
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 60px; /* Vertikal markazlash uchun line-height bilan teng qildik */
   color: #f8f8ff;
+  cursor: pointer; /* Ko'rsatkichni qo'l shakliga o'zgartirish */
+  transition: all 0.3s ease; /* Barcha o'zgarishlar uchun o'tish effektlari qo'shildi */
 }
+
+.home-navbar .navbar-container .detail .signup-button::before,
+.home-navbar .navbar-container .detail .signup-button::after {
+  content: '✦'; /* Yulduzcha belgisi */
+  position: absolute;
+  font-size: 24px; /* Yulduzcha kattaligi */
+  color: #ffeb3b; /* Yulduzcha rangi */
+  opacity: 0; /* Yulduzcha ko'rinmas holatda bo'ladi */
+  transition: all 0.3s ease; /* Silliq o'tish */
+}
+
+.home-navbar .navbar-container .detail .signup-button::before {
+  top: -10px;
+  left: 10px;
+}
+
+.home-navbar .navbar-container .detail .signup-button::after {
+  bottom: -10px;
+  right: 10px;
+}
+
+.home-navbar .navbar-container .detail .signup-button:hover::before,
+.home-navbar .navbar-container .detail .signup-button:hover::after {
+  opacity: 1; /* Yulduzchalarni ko'rinadigan qilish */
+  top: -30px; /* Hover holatida yuqoriga siljitish */
+  bottom: -30px; /* Hover holatida pastga siljitish */
+}
+
 
 .home-navbar .navbar-container .logo-frame {
   margin-top: 43px;

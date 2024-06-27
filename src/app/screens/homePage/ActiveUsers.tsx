@@ -35,7 +35,7 @@ return (
                              >
                                  <CardOverflow>
                                     <AspectRatio ratio="1">
-                                        <img src={imagePath} alt=""/>
+                                        <img src={imagePath} style={{borderRadius:"22px"}} alt=""/>
                                     </AspectRatio>
                                  </CardOverflow>
 

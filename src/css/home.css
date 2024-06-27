@@ -31,22 +31,22 @@
 
 .homepage .static-frame .info .static-box .static-num {
     text-align: center;
-    font-family: "Poppins";
+    font-family: "Robbo Serif";
     font-size: 54px;
     font-style: normal;
     font-weight: 600;
     line-height: 80px;
-    color: #d7b686;
+    color: #ffedd3;
 }
 
 .homepage .static-frame .info .static-box .static-text {
     text-align: center;
-    font-family: "Poppins";
+    font-family: "Robbo Serif";
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: 30px;
-    color: #d7b686;
+    color: #ffedd3;
 }
 
 /** POPULAR DISHES **/
@@ -73,7 +73,7 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: 1.44px;
-    color: #000;
+    color: #140c6b;
 }
 
 .homepage .popular-dishes-frame .popular-section .cards-frame {
@@ -82,12 +82,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    
 }
 
 .homepage .popular-dishes-frame .popular-section .cards-frame .card {
-    min-height: 430px;
-    min-width: 300px;
-    cursor: pointer;   
+  min-height: 430px;
+  min-width: 300px;
+  cursor: pointer;
+  box-shadow: 0 18px 16px rgba(6, 522, 35, 0.3); /* Box shadow qo'shildi */
+}
+
+.homepage .popular-dishes-frame .popular-section .cards-frame .card:hover {
+  box-shadow: 0 8px 16px rgba(35, 48, 226, 2); /* Hover effektida box shadow oshadi */
 }
 
 .homepage .popular-dishes-frame .popular-section .cards-frame .card .card-cover {
@@ -98,6 +104,10 @@
     ),
         linear-gradient(to top, rgba(0,0,0,0.4),rgba(0,0,0,0) 300px);
         /* bu orqadagi rasmni rangini to'qlashtirib textni yacshi ko'rsatish ucn */
+}
+.homepage .views {
+justify-content:space-between;
+height: 340px;
 }
 
 .homepage .popular-dishes-frame .no-data {
@@ -131,6 +141,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .homepage .new-products-frame .category-title{
@@ -139,6 +150,7 @@
     font-weight: 700;
     font-size: 36px;
     line-height: 43px;
+    color: #140c6b;
 }
 
 .homepage .new-products-frame .main .cards-frame {
@@ -146,14 +158,17 @@
     margin: 47px 2px 2px 2px;
     flex-direction: row;
     justify-content: space-between;
-    
 }
 
-.homepage .new-products-frame .main .card {
-    height: 335px;
+.homepage .new-products-frame .main .cards {
     width: 290px;
+    height: 100%;
     cursor: pointer;
-    border: 1px solid rgb(216, 214, 214);
+    box-shadow: 4px 6px 20px rgba(168, 204, 157, 0.756);
+    
+}
+.homepage .new-products-frame .main .cards:hover {
+  box-shadow: 0 8px 16px rgba(35, 48, 226, 2); /* Hover effektida box shadow oshadi */
 }
 .homepage .new-products-frame .product-sale {
     position: absolute;
@@ -164,28 +179,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #ff9200;
-    box-shadow: 4px 6px 20px rgba(0,0,0,0.1);
+    background: #75a475;
     border-radius: 25px;
     font-family: "Poppins";
     font-size: 12px;
     line-height: 21px;
+    box-shadow: 0 8px 16px rgba(2, 48, 226, 2);
     color: #f8f8ff;
 }
 
 .homepage .new-products-frame .product-detail {
-    width: auto;
-    height: 49%;
+    width: 100;
+    height: 70px;
     display: flex;
     justify-content: center;
     margin-top: -12px;
     border-top: 1px solid;
-    border-color: #f8f8ff;
-    background-color: #fafbfb;
+    border-color: #2a2adb;
+    background-color: #f0f8ff !important;
+    
 }
 
 .homepage .new-products-frame .product-detail .info {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -193,15 +210,29 @@
 
 }
 
-.homepage .new-products-frame .product-detail .title {
-    width: 65px;
-    font-weight: 500;
+.homepage .new-products-frame .product-detail .titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+}
+
+.homepage .new-products-frame .product-detail .titles .title {
+  font-family: "Poppins";
+  font-size: 20px;
+  font-weight: 900;
+
 }
 
 .homepage .new-products-frame .product-detail .price {
-    margin-left: 10px;
+  font-family: "Poppins";
+    margin-left: 30px;
+  font-size: 20px;
     width: 20px;
-    font-weight: 500;
+    font-weight: 800;
+  text-align: center;
+
 }
 
 .homepage .new-products-frame .product-detail .divider {
@@ -243,20 +274,20 @@
     box-shadow: -3px 0px 20px 14px #34343480;
 } 
 
-.homepage .ads-restaurant-frame .ads-video{
-    width: 100%;
-    background: #0c0e12;
-    display: flex;
-    box-shadow: 0px -8px 90px rgb(215, 215, 255);
-    transform: scale(1.5);
-    overflow: hidden;
-} 
+.homepage .ads-restaurant-frame .ads-video {
+  width: 100%;
+  background: #0c0e12;
+  display: flex;
+  box-shadow: 0px -8px 90px rgba(215 215 215);
+  transform: scale(1.5);
+  overflow: hidden;
+}
 /** ACTIVE USERS **/
 
 .homepage .active-users-frame {
     width: 100%;
     height: 550px;
-    background: #f8f8ff;
+    background: white;
     display: flex;
 }
 
@@ -273,6 +304,7 @@
     font-weight: 700;
     font-size: 36px;
     line-height: 43px;
+    color: #140c6b;
 }
 
 .homepage .cards-frame {
@@ -280,6 +312,7 @@
     margin-top: 20px;
     flex-direction: row;
     justify-content: center;
+    
 }
 
 .homepage .cards-frame .card {
@@ -289,17 +322,23 @@
     min-height: 305px;
     min-width: 305px;
     cursor: pointer;
-    border-radius: 12px;
-    background: rgb(255, 255, 255);
+    border-radius: 22px;
+    background-color: #f0f8ff !important;
     border: none;
-}   
+    box-shadow: 4px 6px 20px rgba(168, 204, 157, 0.756);
+    
+}
+.homepage .cards-frame .card:hover {
+  box-shadow: 0 8px 16px rgba(35, 48, 226, 2); /* Hover effektida box shadow oshadi */
+}  
 
 .homepage .cards-frame .member-nickname {
+  height: 20px;
     display: flex;
     justify-content: center;
     color: rgb(0, 0, 0);
-    font-family: Roboto Serif;
-    font-size: 14px;
+    font-family: cursive;
+    font-size: 18px;
     font-weight: 600;
     line-height: 14px;
     letter-spacing: 0%;
@@ -339,6 +378,7 @@
     font-size: 36px;
     line-height: 43px;
     padding-top: 20px;
+    color: #140c6b;
   }
   
   .homepage .events-frame .events-main {
@@ -382,23 +422,34 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background: hsl(41, 98%, 82%);
+    padding: 20px;
+
   }
   
   .homepage .events-frame .events-info .events-info-frame {
     position: relative;
     width: 500px;
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
+    background: none;
     align-items: center;
-  }
-  
+    box-shadow: 4px 6px 20px rgba(168, 204, 157, 0.756);
+    border-radius: 47px;
+    
+}
+.homepage .events-frame .events-info .events-info-frame:hover {
+  box-shadow: 0 8px 16px rgba(35, 48, 226, 2); /* Hover effektida box shadow oshadi */
+} 
+
   .homepage .events-frame .events-img {
     width: 100%;
     height: 100%;
     display: flex;
-    border-radius: 10px;
+    border-radius: 47px;
     background-size: cover;
+    
   }
   
   .homepage .events-frame .events-desc {
@@ -411,12 +462,13 @@
     bottom: 5px;
     background: #f8f8ff;
     box-shadow: 0px 40px 30px rgba(25, 25, 46, 0.04);
-    border-radius: 8px;
+    border-radius: 50px;
   }
   
   .homepage .events-frame .events-desc .events-bott {
     width: 97%;
     height: auto;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -464,7 +516,6 @@
   }
   
   .homepage .events-frame .bott-left .bott-info {
-    margin-top: 10px;
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
@@ -508,6 +559,6 @@
   
   .homepage .events-frame .swiper-pagination-bullet-active {
     background: #343434;
-    border-radius: 50%;
+    border-radius: 20%;
   }
   
