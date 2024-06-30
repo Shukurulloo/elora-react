@@ -167,6 +167,7 @@ export default function Basket(props: BasketProps) {
                   onClick={proceedOrderHandler} 
                   startIcon={<ShoppingCartIcon />} 
                   variant={"contained"}
+                  style={{backgroundColor:"blue", color:'white'}}
                   >
                  Order
                </Button>

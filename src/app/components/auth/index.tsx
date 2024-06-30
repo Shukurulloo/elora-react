@@ -194,7 +194,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
           <Stack
             className={classes.paper}
             direction={"row"}
-            sx={{ width: "700px" }}
+            sx={{ width: "700px", backgroundColor:"#c9eed6", borderRadius: "10px" }}
           >
             <ModalImg src={"/img/auth.jpg"} alt="camera" />
             <Stack
@@ -204,7 +204,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 alignItems: "center",
               }}
             >
-              <h2>Login Form</h2>
+              <h2 style={{color: "#140c6b"}}>Login Form</h2>
               <TextField
                 id="outlined-basic"
                 label="username"
@@ -226,7 +226,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 color={"primary"}
                 onClick={handleLoginRequest}
               >
-                <LoginIcon sx={{ mr: 1 }} />
+                <LoginIcon sx={{ mr: 1, color:'#fffcfc' }} />
                 Login
               </Fab>
             </Stack>

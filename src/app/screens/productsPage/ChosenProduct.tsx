@@ -76,70 +76,133 @@ export default function ChosenProduct(props: ChosenProductProps) {
 
   if(!chosenProduct) return null;
   return (
-    <div className={"chosen-product"}>
-      <Box className={"title"}>Product Detail</Box>
-      <Container className={"product-container"}>
-        <Stack className={"chosen-product-slider"}>
-        {/* Swiper rasm, malumotlarni yonidagiga o'tkazib korish */}
-          <Swiper
-            loop={true}
-            spaceBetween={10}
-            navigation={true}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="swiper-area"
-          >
-            {chosenProduct?.productImages.map((ele: string, index: number) => {
-                const imagePath = `${serverApi}/${ele}`;
-                return (
-                  <SwiperSlide key={index}>
-                    <img className="slider-image" src={imagePath} />
-                  </SwiperSlide>
-                );
-              }
-            )}
-          </Swiper>
-        </Stack>
-        <Stack className={"chosen-product-info"}>
-          <Box className={"info-box"}>
-            <strong className={"product-name"}>{chosenProduct.productName}</strong>
-            <span className={"resto-name"}>{restaurant?.memberNick}</span>
-            <span className={"resto-name"}>{restaurant?.memberPhone}</span>
-            <Box className={"rating-box"}>
-              <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
-              <div className={"evaluation-box"}>
-                <div className={"product-view"}>
-                  <RemoveRedEyeIcon sx={{ mr: "10px" }} />
-                  <span>{chosenProduct?.productViews}</span>
-                </div>
+    <div className="chosen-product">
+    <Box className="title">Product Detail</Box>
+    <Container className="product-container">
+      <Stack className="chosen-product-slider">
+        <Swiper
+          loop={true}
+          spaceBetween={10}
+          navigation={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="swiper-area"
+        >
+          {chosenProduct?.productImages.map((ele, index) => {
+            const imagePath = `${serverApi}/${ele}`;
+            return (
+              <SwiperSlide key={index}>
+                <img className="slider-image" src={imagePath} alt={`Product ${index}`} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </Stack>
+      <Stack className="chosen-product-info">
+        <Box className="info-box">
+          <strong className="product-name">{chosenProduct.productName}</strong>
+          <span className="resto-name">{restaurant?.memberNick}</span>
+          <span className="resto-phone">{restaurant?.memberPhone}</span>
+          <Box className="rating-box">
+            <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+            <div className="evaluation-box">
+              <div className="product-view">
+                <RemoveRedEyeIcon sx={{ mr: "10px" }} />
+                <span>{chosenProduct?.productViews}</span>
               </div>
-            </Box>
-            <p className={"product-desc"}>
-              {chosenProduct?.productDesc 
-                ? chosenProduct?.productDesc 
-                : "No Description"}
-                </p>
-            <Divider height="1" width="100%" bg="#000000" />
-            <div className={"product-price"}>
-              <span>Price:</span>
-              <span>${chosenProduct?.productPrice}</span>
-            </div>
-            <div className={"button-box"}>
-              <Button variant="contained"
-              onClick={(e) => {
-                onAdd({
-                    _id: chosenProduct._id,
-                    quantity: 1, // doim bitta tavar qo'shishi kerak
-                    name: chosenProduct.productName,
-                    price: chosenProduct.productPrice,
-                    image: chosenProduct.productImages[0],
-                });
-                e.stopPropagation(); // chosen pagega o'tishini to'xtatadi
-            }}
-              >Add To Basket</Button>
             </div>
           </Box>
-        </Stack>
-      </Container>
-    </div>
+          <p className="product-desc">
+            {chosenProduct?.productDesc ? chosenProduct?.productDesc : "No Description"}
+          </p>
+          <Divider height="1" width="100%" bg="#000000" />
+          <div className="product-price">
+            <span>Price:</span>
+            <span>${chosenProduct?.productPrice}</span>
+          </div>
+          <div className="button-box">
+            <Button variant="contained"
+              onClick={(e) => {
+                onAdd({
+                  _id: chosenProduct._id,
+                  quantity: 1,
+                  name: chosenProduct.productName,
+                  price: chosenProduct.productPrice,
+                  image: chosenProduct.productImages[0],
+                });
+                e.stopPropagation();
+              }}
+            >
+              Add To Basket
+            </Button>
+          </div>
+        </Box>
+      </Stack>
+    </Container>
+  </div>
+    // <div className={"chosen-product"}>
+    //   <Box className={"title"}>Product Detail</Box>
+    //   <Container className={"product-container"}>
+    //     <Stack className={"chosen-product-slider"}>
+    //     {/* Swiper rasm, malumotlarni yonidagiga o'tkazib korish */}
+    //       <Swiper
+    //         loop={true}
+    //         spaceBetween={10}
+    //         navigation={true}
+    //         modules={[FreeMode, Navigation, Thumbs]}
+    //         className="swiper-area"
+    //       >
+    //         {chosenProduct?.productImages.map((ele: string, index: number) => {
+    //             const imagePath = `${serverApi}/${ele}`;
+    //             return (
+    //               <SwiperSlide key={index}>
+    //                 <img className="slider-image" src={imagePath} />
+    //               </SwiperSlide>
+    //             );
+    //           }
+    //         )}
+    //       </Swiper>
+    //     </Stack>
+    //     <Stack className={"chosen-product-info"}>
+    //       <Box className={"info-box"}>
+    //         <strong className={"product-name"}>{chosenProduct.productName}</strong>
+    //         <span className={"resto-name"}>{restaurant?.memberNick}</span>
+    //         <span className={"resto-name"}>{restaurant?.memberPhone}</span>
+    //         <Box className={"rating-box"}>
+    //           <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+    //           <div className={"evaluation-box"}>
+    //             <div className={"product-view"}>
+    //               <RemoveRedEyeIcon sx={{ mr: "10px" }} />
+    //               <span>{chosenProduct?.productViews}</span>
+    //             </div>
+    //           </div>
+    //         </Box>
+    //         <p className={"product-desc"}>
+    //           {chosenProduct?.productDesc 
+    //             ? chosenProduct?.productDesc 
+    //             : "No Description"}
+    //             </p>
+    //         <Divider height="1" width="100%" bg="#000000" />
+    //         <div className={"product-price"}>
+    //           <span>Price:</span>
+    //           <span>${chosenProduct?.productPrice}</span>
+    //         </div>
+    //         <div className={"button-box"}>
+    //           <Button variant="contained"
+    //           onClick={(e) => {
+    //             onAdd({
+    //                 _id: chosenProduct._id,
+    //                 quantity: 1, // doim bitta tavar qo'shishi kerak
+    //                 name: chosenProduct.productName,
+    //                 price: chosenProduct.productPrice,
+    //                 image: chosenProduct.productImages[0],
+    //             });
+    //             e.stopPropagation(); // chosen pagega o'tishini to'xtatadi
+    //         }}
+    //           >Add To Basket</Button>
+    //         </div>
+    //       </Box>
+    //     </Stack>
+    //   </Container>
+    // </div>
   );
 }

@@ -130,7 +130,6 @@ export default function PausedOrders(props: PausedOrdersProps) {
                                 <Button
                                     value={order._id}
                                     variant="contained"
-                                    color="secondary"
                                     className={"cancel-button"}
                                     onClick={deleteOrderHandler}
                                 >

@@ -17,6 +17,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 .home-navbar .navbar-container .menu .brand-logo {
@@ -67,6 +68,7 @@
 .home-navbar .navbar-container .menu h1 {
   font-family: cursive;
   font-size: 42px;
+  margin-top: 20px;
   color: #bcd8ff;
 }
 
@@ -275,6 +277,7 @@
 }
 .other-navbar .navbar-container .menu h1 {
     font-family: cursive;
+    margin-top: 20px;
     font-size: 42px;
     color: #bcd8ff;
   }
@@ -337,7 +340,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: #d7b586;
+  background: #9cb1f0;
   border-width: 1px 0px;
   border-style: solid;
   border-color: #343434;
@@ -346,6 +349,8 @@
 .basket-frame .basket-info-box {
   position: relative;
   margin-top: 6px;
+  background-color: #bbd786;
+  border-radius: 10px;
   width: 100%;
   height: auto;
   display: flex;
@@ -357,7 +362,8 @@
   width: 60px;
   height: 60px;
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 29px;
+  border-radius: 12px;
+padding: 7px;
 }
 
 .basket-info-box .product-name {
